@@ -1,0 +1,19 @@
+// First page user sees when they visit the site
+// Use as React routing page
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import logo from "./logo.svg";
+import "./App.css";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
