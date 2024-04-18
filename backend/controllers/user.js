@@ -1,6 +1,6 @@
 /**
- * Controller functions for user authentication (signup and login)
- * These functions handle user signup and login requests, interact with the database,
+ * Server-side controller functions for user authentication (signup, login, and logout)
+ * These functions handle user signup, login, logout requests, interact with the database,
  * and generate JWT tokens for authentication
  */
 
@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const { User } = require("../models");
 
 // Controller function for user signup
-exports.signup = (req, res, next) => {
+exports.signup = (req, res) => {
   // Hash the password using bcrypt
   bcrypt
     .hash(req.body.password, 10)
@@ -41,7 +41,7 @@ exports.signup = (req, res, next) => {
 };
 
 // Controller function for user login
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   // Find user by email in the database
   User.findOne({ where: { email: req.body.email } })
     .then((user) => {
@@ -79,4 +79,10 @@ exports.login = (req, res, next) => {
       console.log(error);
       res.status(500).json({ error: error.message });
     });
+};
+
+// Controller function for user logout
+exports.logout = (req, res) => {
+  // Respond with a success message
+  res.status(200).json({ message: "Logout successful" });
 };
