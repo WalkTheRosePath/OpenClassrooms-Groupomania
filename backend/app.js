@@ -9,7 +9,7 @@ const express = require('express');
 const path = require('path');
 
 // Import user routes
-// const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
@@ -28,6 +28,6 @@ app.use((req, res, next) => {
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Mount user routes
-// app.use('/api/auth', userRoutes); 
+app.use('/api/auth', userRoutes); 
 
 module.exports = app;
