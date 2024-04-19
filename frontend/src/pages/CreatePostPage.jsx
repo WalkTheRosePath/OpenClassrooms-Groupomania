@@ -11,28 +11,34 @@ const CreatePostPage = () => {
     multimedia: null,
   });
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to navigate programmatically
 
+  // Function to handle changes in form fields
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: name === "multimedia" ? files[0] : value,
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append("title", formData.title);
-      formDataToSend.append("content", formData.content);
-      formDataToSend.append("multimedia", formData.multimedia);
+      // Check if formData contains all required fields for creating a post
+      if (!formData.title || !formData.content || !formData.userId) {
+        console.error("Missing required fields for creating a post");
+        // TODO display an error message to the user
+        return;
+      }
 
-      const response = await axios.post("/api/posts", formDataToSend);
+      // Send a POST request to create a new post using Axios
+      const response = await axios.post("/api/posts", formData);
 
       if (response.status === 200) {
         console.log("Post created successfully");
+        // Redirect the user to the homepage
         navigate("/home");
       } else {
         console.error("Failed to create post:", response.statusText);
