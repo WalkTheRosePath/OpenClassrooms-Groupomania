@@ -26,10 +26,10 @@ const CreatePostPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Check if formData contains all required fields for creating a post
-      if (!formData.title || !formData.content || !formData.userId) {
-        console.error("Missing required fields for creating a post");
-        // TODO display an error message to the user
+      // Check if formData contains the required field (title)
+      if (!formData.title.trim()) {
+        console.error("Missing required field: Title");
+        window.alert("Please enter a title for your post.");
         return;
       }
 

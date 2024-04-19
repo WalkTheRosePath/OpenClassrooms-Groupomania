@@ -1,4 +1,4 @@
-// Code to render the App component
+// Client-side code to render the App component
 
 // Import necessary modules
 import React from 'react';
