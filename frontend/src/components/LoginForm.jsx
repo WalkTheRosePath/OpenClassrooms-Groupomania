@@ -1,6 +1,6 @@
 // LoginForm.jsx
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ const LoginForm = () => {
     password: "",
   });
 
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +30,7 @@ const LoginForm = () => {
     })
       .then((response) => {
         if (response.ok) {
-          // Redirect to the Home page upon successful login
+          // Redirect to the HomePage upon successful login
           history.push("/home");
         } else {
           // Handle authentication error (e.g., invalid credentials)
