@@ -1,3 +1,6 @@
+/* Used for styling the components within the client-side App component 
+   or any other components imported into it */
+
 .App {
   text-align: center;
 }
