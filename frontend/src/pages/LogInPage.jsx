@@ -1,16 +1,18 @@
 // LoginPage.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginForm from "../components/LoginForm"; 
+import LogInForm from "../components/LogInForm";
+import Header from "../components/Header"; 
 
-const LoginPage = () => {
+const LogInPage = () => {
   return (
     <div>
-      <h2>Login</h2>
-      <LoginForm />
+      <Header />
+      <h2>Log In</h2>
+      <LogInForm />
       <Link to="/signup">Don't have an account? Sign up here.</Link>
     </div>
   );
 };
 
-export default LoginPage;
+export default LogInPage;

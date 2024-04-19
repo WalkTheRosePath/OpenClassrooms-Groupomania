@@ -1,9 +1,10 @@
-// LoginForm.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -20,8 +21,8 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Send login request to the backend with formData
-    fetch("/api/login", {
+    // Send sign-up request to the backend with formData
+    fetch("/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,22 +31,44 @@ const LoginForm = () => {
     })
       .then((response) => {
         if (response.ok) {
-          // Redirect to the HomePage upon successful login
-          navigate.push("/home");
+          // Redirect to the login page upon successful sign-up
+          navigate("/login");
         } else {
-          // Handle authentication error (e.g., invalid credentials)
-          alert("Invalid email or password. Please try again.");
+          // Handle sign-up error (e.g., email already exists)
+          alert("Sign-up failed. Please try again.");
         }
       })
       .catch((error) => {
-        console.error("Error logging in:", error);
+        console.error("Error signing up:", error);
         // Handle other errors (e.g., network issues)
-        alert("An error occurred while logging in. Please try again later.");
+        alert("An error occurred while signing up. Please try again later.");
       });
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="firstName">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+      </div>
       <div>
         <label htmlFor="email">Email:</label>
         <input
@@ -68,9 +91,9 @@ const LoginForm = () => {
           required
         />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;

@@ -11,7 +11,7 @@ const Header = () => {
       </div>
       <div className="title">
         <h1>Groupomania</h1>
-        <h2>Connect with your community</h2>
+        <h2>Connect with our community!</h2>
       </div>
     </header>
   );
