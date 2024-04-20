@@ -1,4 +1,7 @@
+// Server-side controller functions for posts
+
 "use strict";
+
 const { Post } = require("../models");
 
 const PostController = {

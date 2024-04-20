@@ -1,3 +1,5 @@
+// Server-side user model
+
 'use strict';
 const {
   Model

@@ -1,3 +1,5 @@
+// Server-side entry point for the database models
+
 "use strict";
 
 const fs = require("fs");

@@ -1,8 +1,4 @@
-/**
- * Server-side controller functions for user authentication (signup, login, and logout)
- * These functions handle user signup, login, logout requests, interact with the database,
- * and generate JWT tokens for authentication
- */
+// Server-side controller functions for user auth (signup, login, and logout)
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");

@@ -1,3 +1,5 @@
+// Server-side post model
+
 "use strict";
 const { Model } = require("sequelize");
 

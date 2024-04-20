@@ -1,4 +1,7 @@
+// Server-side migration for sequelize-cli
+
 'use strict';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {

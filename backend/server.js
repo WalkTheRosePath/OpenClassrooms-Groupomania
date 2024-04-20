@@ -1,5 +1,5 @@
 /**
- * Entry point for the application
+ * Server-side entry point for the application
  * Initializes the HTTP server, sets up error handling, 
  * and starts listening on the specified port
  */

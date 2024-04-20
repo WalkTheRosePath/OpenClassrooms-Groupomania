@@ -1,8 +1,4 @@
-/**
- * Server-side entry point for the application
- * Initializes the Express server, connects to PostgreSQL database,
- * and defines routes for handling user authentication (signup and login)
- */
+// Server-side entry point for the application
 
 // Import the required modules
 const express = require('express');
