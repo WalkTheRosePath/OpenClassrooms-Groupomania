@@ -2,16 +2,21 @@
 
 const express = require("express");
 const router = express.Router();
+const postController = require("../controllers/post");
 
-// Define routes for managing posts
-router.get("/", (req, res) => {
-  // Handle GET request for fetching all posts
-});
+// Route for getting all posts
+router.get("/", postController.getAllPosts);
 
-router.post("/", (req, res) => {
-  // Handle POST request for creating a new post
-});
+// Route for creating a new post
+router.post("/", postController.createPost);
 
-// Add more routes as needed
+// Route for getting a post by ID
+router.get("/:postId", postController.getPostById);
+
+// Route for updating a post by ID
+router.put("/:postId", postController.updatePost);
+
+// Route for deleting a post by ID
+router.delete("/:postId", postController.deletePost);
 
 module.exports = router;

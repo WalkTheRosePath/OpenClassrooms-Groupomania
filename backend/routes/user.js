@@ -1,4 +1,4 @@
-// Server-side routes for authenticating signup, login, and logout requests
+// Server-side routes for managing signup, login, and logout
 
 // Import the required modules
 const express = require('express');
