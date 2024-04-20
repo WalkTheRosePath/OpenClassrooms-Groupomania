@@ -1,13 +1,12 @@
 // Server-side entry point for the application
 
 // Import the required modules
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 
-// Import user routes
-const userRoutes = require('./routes/user');
-const postRoutes = require("./routes/posts");
+// Import routes from the index file
+const routes = require("./routes");
 
 const app = express();
 
@@ -18,10 +17,9 @@ app.use(express.json());
 app.use(cors());
 
 // Serve static images
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
-// Mount user and post routes
-app.use('/api/auth', userRoutes);
-app.use("/api/post", postRoutes);  
+// Mount routes from the index file
+app.use("/api", routes);
 
 module.exports = app;
