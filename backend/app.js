@@ -22,6 +22,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Mount user and post routes
 app.use('/api/auth', userRoutes);
-app.use("/api/posts", postRoutes);  
+app.use("/api/post", postRoutes);  
 
 module.exports = app;

@@ -34,7 +34,7 @@ const CreatePostForm = () => {
       }
 
       // Send a POST request to create a new post using Axios
-      const response = await axios.post("/api/posts", formData);
+      const response = await axios.post("/api/post", formData);
 
       if (response.status === 200) {
         console.log("Post created successfully");

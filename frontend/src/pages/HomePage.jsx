@@ -12,7 +12,7 @@ const HomePage = () => {
     // Fetch posts data from the backend API
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("/api/posts");
+        const response = await axios.get("/api/post");
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
