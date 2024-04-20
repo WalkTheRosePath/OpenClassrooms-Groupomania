@@ -7,6 +7,7 @@ const path = require('path');
 
 // Import user routes
 const userRoutes = require('./routes/user');
+const postRoutes = require("./routes/posts");
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.use(cors());
 // Serve static images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// Mount user routes
-app.use('/api/auth', userRoutes); 
+// Mount user and post routes
+app.use('/api/auth', userRoutes);
+app.use("/api/posts", postRoutes);  
 
 module.exports = app;

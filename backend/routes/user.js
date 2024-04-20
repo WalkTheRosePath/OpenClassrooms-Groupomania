@@ -1,6 +1,4 @@
-/**
- * Define user authentication routes for signup and login
- */
+// Server-side routes for authenticating signup and login
 
 // Import the required modules
 const express = require('express');
