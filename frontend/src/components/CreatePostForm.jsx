@@ -1,7 +1,8 @@
+// Client-side component for creating a new post
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 
 const CreatePostForm = () => {
   const [formData, setFormData] = useState({

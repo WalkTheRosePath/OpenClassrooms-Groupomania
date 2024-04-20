@@ -1,8 +1,9 @@
-// SignUpPage.jsx
+// Client-side component for the sign-up page
+
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import SignUpForm from "../components/SignUpForm";
+import Header from "./components/Header";
+import SignUpForm from "./components/SignUpForm";
 
 const SignUpPage = () => {
   return (

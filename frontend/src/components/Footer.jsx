@@ -1,3 +1,5 @@
+// Client-side component for the footer
+
 import React from "react";
 
 const Footer = () => {

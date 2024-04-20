@@ -1,4 +1,5 @@
-// LoginForm.jsx
+// Client-side component for the login form
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

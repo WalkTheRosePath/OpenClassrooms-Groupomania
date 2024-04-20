@@ -1,8 +1,9 @@
-// LoginPage.jsx
+// Client-side component for the login page
+
 import React from "react";
 import { Link } from "react-router-dom";
-import LogInForm from "../components/LogInForm";
-import Header from "../components/Header"; 
+import LogInForm from "./components/LogInForm";
+import Header from "./components/Header"; 
 
 const LogInPage = () => {
   return (
