@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -25,9 +26,7 @@ const HomePage = () => {
   return (
     <div>
       <Header />
-      
-      <h1>Home Page</h1>
-
+            <h1>Home Page</h1>
       {/* Display list of posts */}
       <div>
         {posts.map((post) => (
@@ -39,6 +38,7 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

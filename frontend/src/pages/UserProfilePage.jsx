@@ -1,6 +1,9 @@
 // Client-side component for the user profile page
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const UserProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -25,11 +28,13 @@ const UserProfilePage = () => {
 
   return (
     <div>
+      <Header />
       <h1>User Profile</h1>
       <p>
         Name: {user.firstName} {user.lastName}
       </p>
       <p>Email: {user.email}</p>
+      <Footer />
     </div>
   );
 };
