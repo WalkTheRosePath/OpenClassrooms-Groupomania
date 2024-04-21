@@ -28,12 +28,6 @@ const HomePage = () => {
       
       <h1>Home Page</h1>
 
-      {/* Link to create new post page */}
-      <Link to="/create-post">Create New Post</Link>
-
-      {/* Link to user profile page */}
-      <Link to="/profile">View Profile</Link>
-
       {/* Display list of posts */}
       <div>
         {posts.map((post) => (

@@ -41,13 +41,17 @@ const PostDetailsPage = () => {
   return (
     <div>
       <Header />
+
       <div className="post-details-container">
         {isLoading && <div>Loading...</div>}
         {error && <div>Error: {error}</div>}
         {post && (
+          // Render post details
           <div className="post-details">
             <h2>{post.title}</h2>
+
             <p>{post.content}</p>
+
             {/* Render multimedia content if available */}
             {post.multimediaUrl && (
               <div className="multimedia">
@@ -61,10 +65,12 @@ const PostDetailsPage = () => {
                 )}
               </div>
             )}
+
             <p>Posted by: User {post.userId}</p>
           </div>
         )}
       </div>
+
       <Footer />
     </div>
   );

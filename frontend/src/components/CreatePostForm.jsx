@@ -15,10 +15,10 @@ const CreatePostForm = () => {
 
   // Function to handle changes in form fields
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: files ? files[0] : value,
     }));
   };
 
@@ -33,8 +33,18 @@ const CreatePostForm = () => {
         return;
       }
 
+      // Create a FormData object to send the file
+      const postData = new FormData();
+      postData.append("title", formData.title);
+      postData.append("content", formData.content);
+      postData.append("multimedia", formData.multimedia);
+
       // Send a POST request to create a new post using Axios
-      const response = await axios.post("/api/post", formData);
+      const response = await axios.post("/api/post", postData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (response.status === 200) {
         console.log("Post created successfully");

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
         <h1>Groupomania</h1>
         <h2>Connect with our community!</h2>
       </div>
+      <NavBar />
     </header>
   );
 };

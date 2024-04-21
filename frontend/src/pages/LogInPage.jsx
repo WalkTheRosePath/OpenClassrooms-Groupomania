@@ -9,8 +9,11 @@ const LogInPage = () => {
   return (
     <div>
       <Header />
+
       <h2>Log In</h2>
+
       <LogInForm />
+      
       <Link to="/signup">Don't have an account? Sign up here.</Link>
     </div>
   );
