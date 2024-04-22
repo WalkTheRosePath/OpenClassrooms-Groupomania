@@ -3,13 +3,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
+import "../App.css";
 
 const Header = () => {
   return (
     <header>
       <div className="logo">
         <Link to="/">
-          <img src="/icon.png" alt="Groupomania Logo" />
+          <img className="logo-img" src="/icon.png" alt="Groupomania Logo" />
         </Link>
       </div>
       <div className="title">
