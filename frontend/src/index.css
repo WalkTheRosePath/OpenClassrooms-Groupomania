@@ -1,4 +1,4 @@
-/* Client-side global stylesheet for the application (index.css)*/
+/* Client-side global stylesheet for the entire application (index.css)*/
 
 /* Global Resets */
 html, body, div, span, applet, object, iframe,
@@ -20,4 +20,17 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+
+/* Global Typography */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
 }
