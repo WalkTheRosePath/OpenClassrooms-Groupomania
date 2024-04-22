@@ -26,7 +26,7 @@ const HomePage = () => {
   return (
     <div>
       <Header />
-            <h1>Home Page</h1>
+      <h1>Home Page</h1>
       {/* Display list of posts */}
       <div>
         {posts.map((post) => (
