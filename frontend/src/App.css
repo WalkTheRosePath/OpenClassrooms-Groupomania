@@ -23,8 +23,38 @@ p {
   font-size: 14px;
 } 
 
+button {
+  background-color: #ffd7d7; 
+  color: #000000; 
+  font-weight: bold;
+  border: none; 
+  padding: 0.5em 1em; 
+  cursor: pointer; 
+  border-radius: 5px; 
+}
+
+button:hover {
+  background-color: #fd2d01; 
+}
+
 .header-container img {
   height: 100px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%; 
+  padding: 0.5em; 
+  box-sizing: border-box; 
 }
 
 footer {

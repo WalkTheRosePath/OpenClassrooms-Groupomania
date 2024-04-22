@@ -52,8 +52,8 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="firstName">First Name:</label>
+      <div className="form-group">
+        <label htmlFor="firstName">First Name</label>
         <input
           type="text"
           id="firstName"
@@ -63,8 +63,8 @@ const SignUpForm = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="lastName">Last Name:</label>
+      <div className="form-group">
+        <label htmlFor="lastName">Last Name</label>
         <input
           type="text"
           id="lastName"
@@ -74,8 +74,8 @@ const SignUpForm = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="email">Email:</label>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -85,8 +85,8 @@ const SignUpForm = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"

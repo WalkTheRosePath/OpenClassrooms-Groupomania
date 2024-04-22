@@ -40,8 +40,8 @@ const LogInForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email:</label>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -51,8 +51,8 @@ const LogInForm = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
