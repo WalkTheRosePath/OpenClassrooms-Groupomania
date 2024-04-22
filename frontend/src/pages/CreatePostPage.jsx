@@ -9,7 +9,6 @@ const CreatePostPage = () => {
   return (
     <div>
       <Header />
-      <h2>Create a Post</h2>
       <CreatePostForm /> 
       <Footer />
     </div>

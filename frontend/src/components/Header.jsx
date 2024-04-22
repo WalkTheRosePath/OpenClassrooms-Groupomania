@@ -8,14 +8,12 @@ import "../App.css";
 const Header = () => {
   return (
     <header>
-      <div className="logo">
+      <div className="header-container">
         <Link to="/">
           <img className="logo-img" src="/icon.png" alt="Groupomania Logo" />
         </Link>
-      </div>
-      <div className="title">
-        <h1>Groupomania</h1>
-        <h2>Connect with our community!</h2>
+        <h2>Groupomania</h2>
+        <h3>Connect with our community!</h3>
       </div>
       <NavBar />
     </header>

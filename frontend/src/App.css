@@ -1,2 +1,25 @@
-/* Client-side global stylesheet for (index.css)*/
+/* Client-side global stylesheet for pages and components (App.css)*/
 
+/* Global Layout */
+
+
+/* Global Component Styling */
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.header-container img {
+  height: 140px;
+}
+
+.header-container h2 {
+  font-size: 40px;
+}
+
+.header-container h3 {
+  font-size: 30px;
+}
