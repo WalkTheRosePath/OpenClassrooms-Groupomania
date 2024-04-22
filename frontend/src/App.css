@@ -1,25 +1,51 @@
-/* Client-side global stylesheet for pages and components (App.css)*/
+/* Client-side stylesheet for pages and components (App.css)*/
 
-/* Global Layout */
+main {
+  text-align: center;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  background-color: #ffffff;
+}
 
-
-/* Global Component Styling */
 h1 {
-  font-size: 40px;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: #ffd7d7;
 }
 
 h2 {
   font-size: 30px;
 }
 
+p {
+  font-size: 14px;
+} 
+
 .header-container img {
-  height: 140px;
+  height: 100px;
 }
 
-.header-container h2 {
-  font-size: 40px;
+footer {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: #ffd7d7;
+  background-color: #fd2d01;
 }
 
-.header-container h3 {
-  font-size: 30px;
+/* Media Query for Mobile Phones */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .header-container img {
+    height: 80px;
+  }
 }

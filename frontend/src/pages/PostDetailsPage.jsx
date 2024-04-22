@@ -41,36 +41,34 @@ const PostDetailsPage = () => {
   return (
     <div>
       <Header />
-
-      <div className="post-details-container">
-        {isLoading && <div>Loading...</div>}
-        {error && <div>Error: {error}</div>}
-        {post && (
-          // Render post details
-          <div className="post-details">
-            <h2>{post.title}</h2>
-
-            <p>{post.content}</p>
-
-            {/* Render multimedia content if available */}
-            {post.multimediaUrl && (
-              <div className="multimedia">
-                {post.multimediaUrl.endsWith(".mp4") ? (
-                  <video controls>
-                    <source src={post.multimediaUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <img src={post.multimediaUrl} alt="Multimedia" />
-                )}
-              </div>
-            )}
-
-            <p>Posted by: User {post.userId}</p>
-          </div>
-        )}
-      </div>
-
+      <h1>Post Details</h1>
+      <main>
+        <div className="post-details-container">
+          {isLoading && <div>Loading...</div>}
+          {error && <div>Error: {error}</div>}
+          {post && (
+            // Render post details
+            <div className="post-details">
+              <h2>{post.title}</h2>
+              <p>{post.content}</p>
+              {/* Render multimedia content if available */}
+              {post.multimediaUrl && (
+                <div className="multimedia">
+                  {post.multimediaUrl.endsWith(".mp4") ? (
+                    <video controls>
+                      <source src={post.multimediaUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img src={post.multimediaUrl} alt="Multimedia" />
+                  )}
+                </div>
+              )}
+              <p>Posted by: User {post.userId}</p>
+            </div>
+          )}
+        </div>
+      </main>
       <Footer />
     </div>
   );

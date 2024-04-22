@@ -30,11 +30,13 @@ const UserProfilePage = () => {
     <div>
       <Header />
       <h1>User Profile</h1>
-      <p>
-        Name: {user.firstName} {user.lastName}
-      </p>
-      <p>Email: {user.email}</p>
-      <Footer />
+      <main>
+        <p>
+          Name: {user.firstName} {user.lastName}
+        </p>
+        <p>Email: {user.email}</p>
+        <Footer />
+      </main>
     </div>
   );
 };

@@ -10,9 +10,11 @@ const SignUpPage = () => {
   return (
     <div>
       <Header />
-      <h2>Sign Up</h2>
-      <SignUpForm />
-      <Link to="/">Already have an account? Log in here.</Link>
+      <h1>Sign Up</h1>
+      <main>
+        <SignUpForm />
+        <Link to="/">Already have an account? Log in here.</Link>
+      </main>
       <Footer />
     </div>
   );

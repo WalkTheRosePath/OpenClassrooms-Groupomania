@@ -60,7 +60,6 @@ const CreatePostForm = () => {
 
   return (
     <div>
-      <h2>Create a Post</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>

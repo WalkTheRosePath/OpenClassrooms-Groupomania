@@ -12,8 +12,6 @@ const Header = () => {
         <Link to="/">
           <img className="logo-img" src="/icon.png" alt="Groupomania Logo" />
         </Link>
-        <h2>Groupomania</h2>
-        <h3>Connect with our community!</h3>
       </div>
       <NavBar />
     </header>

@@ -28,7 +28,7 @@ const HomePage = () => {
       <Header />
       <h1>Home Page</h1>
       {/* Display list of posts */}
-      <div>
+      <main>
         {posts.map((post) => (
           <div key={post.id}>
             <h2>{post.title}</h2>
@@ -37,7 +37,7 @@ const HomePage = () => {
             <Link to={`/post/${post.id}`}>Read more</Link>
           </div>
         ))}
-      </div>
+      </main>
       <Footer />
     </div>
   );

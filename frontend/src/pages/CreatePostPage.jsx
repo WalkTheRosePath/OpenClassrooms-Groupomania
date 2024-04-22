@@ -3,13 +3,16 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import CreatePostForm from "../components/CreatePostForm"; 
+import CreatePostForm from "../components/CreatePostForm";
 
 const CreatePostPage = () => {
   return (
     <div>
       <Header />
-      <CreatePostForm /> 
+      <h1>Create a Post</h1>
+      <main>
+        <CreatePostForm />
+      </main>
       <Footer />
     </div>
   );
