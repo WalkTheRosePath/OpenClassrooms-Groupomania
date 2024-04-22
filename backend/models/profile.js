@@ -1,16 +1,21 @@
-// Server-side user model
+// Server-side profile model
 
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const User = sequelize.define(
-  "User",
+const Profile = sequelize.define(
+  "Profile",
   {
-    // Define the columns of the User table
+    // Define the columns of the Profile table
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -25,15 +30,10 @@ const User = sequelize.define(
       allowNull: false,
       unique: true,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   },
   {
-    tableName: "Users", 
+    tableName: "profiles",
   }
 );
 
-module.exports = User;
-
+module.exports = Profile;
