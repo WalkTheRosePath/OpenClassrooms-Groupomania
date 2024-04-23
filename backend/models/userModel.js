@@ -1,11 +1,14 @@
 // backend/models/userModel.js
 // Server-side sequelize model file defining the user schema
 
+// Import required modules
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
+// Define User model
 class User extends Model {}
 
+// Initialize User model with schema definition
 User.init(
   {
     firstName: {

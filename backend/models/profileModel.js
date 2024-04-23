@@ -1,11 +1,14 @@
 // backend/models/profileModel.js
 // Server-side sequelize model file defining the profile schema
 
+// Import required modules
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
+// Define Profile model
 class Profile extends Model {}
 
+// Initialize Profile model with schema definition
 Profile.init(
   {
     userId: {
