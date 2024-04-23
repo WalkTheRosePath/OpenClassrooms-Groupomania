@@ -1,4 +1,4 @@
-// Server-side routes for managing user profiles
+// Server-side routes for managing profiles (profile.js)
 
 const express = require("express");
 const router = express.Router();

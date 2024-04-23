@@ -1,7 +1,7 @@
-// Server-side controller functions for user profile operations
+// Server-side controller functions for user profile operations (profile.js)
 
 // Import necessary modules
-const User = require("../models/User");
+const User = require("../models/user");
 
 // Controller function to get user profile
 exports.getUserProfile = async (req, res) => {
