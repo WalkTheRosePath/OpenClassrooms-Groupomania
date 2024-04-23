@@ -17,7 +17,7 @@ const NavBar = () => {
   // Render the NavBar only if it should be shown
   return shouldShowNavBar() ? (
     <nav>
-      <ul>
+      <ul className="nav-links">
         <li>
           <Link to="/create-post">Create New Post</Link>
         </li>
