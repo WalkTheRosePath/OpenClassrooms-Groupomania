@@ -5,9 +5,9 @@ const express = require("express");
 const router = express.Router();
 
 // Import route modules
-const postRoutes = require("./post");
-const profileRoutes = require("./profile");
-const userRoutes = require("./user");
+const postRoutes = require("./postRoutes");
+const profileRoutes = require("./profileRoutes");
+const userRoutes = require("./userRoutes");
 
 // Use route modules
 router.use("/post", postRoutes);

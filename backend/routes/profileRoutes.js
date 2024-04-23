@@ -1,9 +1,9 @@
-// backend/routes/profile.js
+// backend/routes/profileRoutes.js
 // Server-side routes for managing profiles (profile.js)
 
 const express = require("express");
 const router = express.Router();
-const profileController = require("../controllers/profile");
+const profileController = require("../controllers/profileController");
 
 // Route for getting user profile by ID
 router.get("/:userId", profileController.getUserProfile);

@@ -1,9 +1,9 @@
-// backend/routes/post.js
+// backend/routes/postRoutes.js
 // Server-side routes for managing posts
 
 const express = require("express");
 const router = express.Router();
-const postController = require("../controllers/post");
+const postController = require("../controllers/postController");
 
 // Route for getting all posts
 router.get("/", postController.getAllPosts);

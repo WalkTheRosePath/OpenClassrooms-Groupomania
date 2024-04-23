@@ -1,4 +1,4 @@
-// backend/controllers/user.js
+// backend/controllers/userController.js
 // Server-side controller functions for user authentication operations
 // Such as user signup, login, and logout
 

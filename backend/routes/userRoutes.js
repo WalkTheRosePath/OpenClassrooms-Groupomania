@@ -1,10 +1,10 @@
-// backend/routes/user.js
+// backend/routes/userRoutes.js
 // Server-side routes for managing signup, login, and logout
 
 // Import the required modules
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/user');
+const userController = require('../controllers/userController');
 
 // Route for user signup
 router.post('/signup', userController.signup);

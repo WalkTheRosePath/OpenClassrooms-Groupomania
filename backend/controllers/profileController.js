@@ -1,4 +1,4 @@
-// backend/controllers/profile.js
+// backend/controllers/profileController.js
 // Server-side controller functions for user profile operations
 // Such as fetching, updating, and deleting user profiles
 

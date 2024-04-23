@@ -1,4 +1,4 @@
-// backend/controllers/post.js
+// backend/controllers/postController.js
 // Server-side controller functions for handling post-related operations 
 // Such as creating, retrieving, updating, and deleting posts
 
