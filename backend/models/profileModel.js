@@ -3,7 +3,8 @@
 
 // Import required modules
 const { Model, DataTypes } = require("sequelize");
-const db = require("./index");
+const { sequelize } = require("./index");
+const User = require("./userModel");
 
 // Define Profile model
 class Profile extends Model {}
@@ -31,11 +32,14 @@ Profile.init(
     },
   },
   {
-    sequelize: db.sequelize,
+    sequelize,
     modelName: "Profile",
     tableName: "Profiles",
   }
 );
+
+// Define the association with the User model
+Post.belongsTo(User, { foreignKey: "userId" });
 
 // Export Profile model
 module.exports = Profile;

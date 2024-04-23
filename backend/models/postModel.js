@@ -3,15 +3,11 @@
 
 // Import required modules
 const { Model, DataTypes } = require("sequelize");
-const db = require("./index");
+const { sequelize } = require("./index");
+const User = require("./userModel");
 
 // Define Post model
-class Post extends Model {
-  // Define method to associate Post with User model
-  static associate(models) {
-    Post.belongsTo(models.User, { foreignKey: "userId" }); 
-  }
-}
+class Post extends Model {}
 
 // Initialize Post model
 Post.init(
@@ -22,11 +18,14 @@ Post.init(
     userId: DataTypes.INTEGER,
   },
   {
-    sequelize: db.sequelize,
+    sequelize,
     modelName: "Post",
     tableName: "Posts",
   }
 );
+
+// Define the association with the User model
+Post.belongsTo(User, { foreignKey: "userId" });
 
 // Export Post model
 module.exports = Post;
