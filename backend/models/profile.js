@@ -1,5 +1,5 @@
 // backend/models/profile.js
-// Server-side profile model (profile.js)
+// Server-side sequelize model file defining the profile schema
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");

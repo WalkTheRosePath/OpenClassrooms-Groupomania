@@ -1,5 +1,6 @@
 // backend/app.js
 // Server-side entry point for the application
+// Configures the Express application and mounts the routes
 
 // Import the required modules
 const express = require("express");

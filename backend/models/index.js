@@ -1,5 +1,6 @@
 // backend/models/index.js
-// Server-side entry point for the database models (index.js)
+// Server-side entry point for the database models
+// Initializes Sequelize and imports all models
 
 "use strict";
 
