@@ -4,11 +4,8 @@
 // Import Express and create a router instance
 const express = require("express");
 const router = express.Router();
-
-// Import post controller
 const { postController } = require("../controllers");
 
-// TODO Add auth to routes that are protected
 
 // Define HTTP routes
 router.get("/", postController.getAllPosts);
