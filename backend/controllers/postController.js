@@ -1,11 +1,11 @@
 // backend/controllers/postController.js
-// Server-side controller functions for handling post-related operations 
+// Server-side controller functions for handling post-related operations
 // Such as creating, retrieving, updating, and deleting posts
 
-"use strict";
-
+// Import necessary modules
 const { Post } = require("../models");
 
+// PostController object with controller functions
 const PostController = {
   // Controller function to create a new post
   async createPost(req, res) {
@@ -108,4 +108,5 @@ const PostController = {
   },
 };
 
+// Export PostController
 module.exports = PostController;

@@ -15,4 +15,5 @@ router.use("/post", postRoutes);
 router.use("/profile", profileRoutes);
 router.use("/auth", userRoutes);
 
+// Export router
 module.exports = router;

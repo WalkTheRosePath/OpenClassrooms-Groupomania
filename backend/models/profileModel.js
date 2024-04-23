@@ -37,4 +37,5 @@ Profile.init(
   }
 );
 
+// Export Profile model
 module.exports = Profile;

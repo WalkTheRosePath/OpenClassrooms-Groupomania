@@ -15,4 +15,5 @@ router.get("/:postId", postController.getPostById);
 router.put("/:postId", postController.updatePost);
 router.delete("/:postId", postController.deletePost);
 
+// Export router
 module.exports = router;

@@ -13,4 +13,5 @@ router.get("/:userId", profileController.getUserProfile);
 router.put("/:userId", profileController.updateUserProfile);
 router.delete("/:userId", profileController.deleteUserProfile);
 
+// Export router
 module.exports = router;

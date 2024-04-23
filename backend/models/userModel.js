@@ -36,4 +36,5 @@ User.init(
   }
 );
 
+// Export User model
 module.exports = User;
