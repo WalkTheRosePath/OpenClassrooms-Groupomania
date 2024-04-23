@@ -6,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 
 // Import post controller
-const postController = require("../controllers/postController");
+const { postController } = require("../controllers");
 
 // Define HTTP routes
 router.get("/", postController.getAllPosts);

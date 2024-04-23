@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import user controller
-const userController = require('../controllers/userController');
+const { userController } = require("../controllers");
 
 // Define HTTP routes
 router.post("/signup", userController.signup);

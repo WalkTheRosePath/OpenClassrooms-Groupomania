@@ -6,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 
 // Import profile controller
-const profileController = require("../controllers/profileController");
+const { profileController } = require("../controllers");
 
 // Define HTTP routes
 router.get("/:userId", profileController.getUserProfile);
