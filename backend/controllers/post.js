@@ -1,5 +1,6 @@
 // backend/controllers/post.js
-// Server-side controller functions for posts
+// Server-side controller functions for handling post-related operations 
+// Such as creating, retrieving, updating, and deleting posts
 
 "use strict";
 

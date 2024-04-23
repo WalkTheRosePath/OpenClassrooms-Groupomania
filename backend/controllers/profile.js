@@ -1,5 +1,6 @@
 // backend/controllers/profile.js
-// Server-side controller functions for user profile operations (profile.js)
+// Server-side controller functions for user profile operations
+// Such as fetching, updating, and deleting user profiles
 
 // Import necessary modules
 const User = require("../models/user");

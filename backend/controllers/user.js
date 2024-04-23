@@ -1,5 +1,6 @@
 // backend/controllers/user.js
-// Server-side controller functions for user auth (signup, login, and logout)
+// Server-side controller functions for user authentication operations
+// Such as user signup, login, and logout
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
