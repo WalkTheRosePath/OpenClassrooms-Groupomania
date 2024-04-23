@@ -3,7 +3,7 @@
 
 // Import required modules
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const db = require("./index");
 
 // Define User model
 class User extends Model {}
@@ -30,9 +30,9 @@ User.init(
     },
   },
   {
-    sequelize, 
-    modelName: "User", 
-    tableName: "Users", 
+    sequelize: db.sequelize,
+    modelName: "User",
+    tableName: "Users",
   }
 );
 

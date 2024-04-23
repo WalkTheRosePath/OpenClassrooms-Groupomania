@@ -3,7 +3,7 @@
 
 // Import required modules
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const db = require("./index");
 
 // Define Post model
 class Post extends Model {
@@ -22,9 +22,9 @@ Post.init(
     userId: DataTypes.INTEGER,
   },
   {
-    sequelize,
+    sequelize: db.sequelize,
     modelName: "Post",
-    tableName: "Posts", 
+    tableName: "Posts",
   }
 );
 
