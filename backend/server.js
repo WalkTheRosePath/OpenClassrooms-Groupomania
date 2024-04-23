@@ -1,8 +1,6 @@
-/**
- * Server-side entry point for the application
- * Initializes the HTTP server, sets up error handling, 
- * and starts listening on the specified port
- */
+// backend/server.js
+// Server-side entry point for the application
+// Initializes the HTTP server, sets up error handling, and starts listening on the specified port
 
 // Import the required modules
 require('dotenv').config();

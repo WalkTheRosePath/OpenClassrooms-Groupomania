@@ -1,3 +1,4 @@
+// backend/routes/index.js
 // Server-side import and export all route files
 
 const express = require("express");

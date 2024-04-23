@@ -1,3 +1,4 @@
+// backend/models/index.js
 // Server-side entry point for the database models (index.js)
 
 "use strict";

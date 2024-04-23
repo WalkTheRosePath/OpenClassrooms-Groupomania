@@ -1,3 +1,4 @@
+// backend/migrations/20240418162416-create-user.js
 // Server-side migration for sequelize-cli
 
 'use strict';

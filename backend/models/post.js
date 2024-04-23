@@ -1,3 +1,4 @@
+// backend/models/post.js
 // Server-side post model (post.js)
 
 const { Model, DataTypes } = require("sequelize");

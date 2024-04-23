@@ -1,3 +1,4 @@
+// backend/controllers/profile.js
 // Server-side controller functions for user profile operations (profile.js)
 
 // Import necessary modules

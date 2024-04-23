@@ -1,3 +1,4 @@
+// backend/models/profile.js
 // Server-side profile model (profile.js)
 
 const { Model, DataTypes } = require("sequelize");

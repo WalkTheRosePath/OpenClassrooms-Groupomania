@@ -1,3 +1,4 @@
+// backend/controllers/post.js
 // Server-side controller functions for posts
 
 "use strict";

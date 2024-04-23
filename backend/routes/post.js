@@ -1,3 +1,4 @@
+// backend/routes/post.js
 // Server-side routes for managing posts
 
 const express = require("express");

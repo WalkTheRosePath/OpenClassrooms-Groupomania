@@ -1,3 +1,4 @@
+// backend/routes/user.js
 // Server-side routes for managing signup, login, and logout
 
 // Import the required modules

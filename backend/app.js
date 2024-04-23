@@ -1,3 +1,4 @@
+// backend/app.js
 // Server-side entry point for the application
 
 // Import the required modules

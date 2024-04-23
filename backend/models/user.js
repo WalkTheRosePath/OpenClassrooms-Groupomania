@@ -1,3 +1,4 @@
+// backend/models/user.js
 // Server-side user model (user.js)
 
 const { Model, DataTypes } = require("sequelize");

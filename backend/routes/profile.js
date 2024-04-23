@@ -1,3 +1,4 @@
+// backend/routes/profile.js
 // Server-side routes for managing profiles (profile.js)
 
 const express = require("express");

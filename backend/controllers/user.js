@@ -1,3 +1,4 @@
+// backend/controllers/user.js
 // Server-side controller functions for user auth (signup, login, and logout)
 
 const bcrypt = require("bcrypt");
