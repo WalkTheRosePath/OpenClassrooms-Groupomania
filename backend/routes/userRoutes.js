@@ -8,13 +8,13 @@ const router = express.Router();
 // Import user controller
 const { userController } = require("../controllers");
 
-// TODO Add auth to routes that are protected (delete user)
+// Import middleware
+const authMiddleware = require("../middleware/authMiddleware");
 
 // Define HTTP routes
 router.post("/signup", userController.signup);
 router.post("/login", userController.login);
-
-// TODO Add delete user route
+router.delete("/user", authMiddleware, userController.deleteUser);
 
 // Export router
 module.exports = router;
