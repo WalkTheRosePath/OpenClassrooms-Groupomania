@@ -1,4 +1,4 @@
-// Server-side entry point for the database models
+// Server-side entry point for the database models (index.js)
 
 "use strict";
 

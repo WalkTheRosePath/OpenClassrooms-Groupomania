@@ -1,17 +1,12 @@
-// Server-side profile model
+// Server-side profile model (profile.js)
 
-const { DataTypes } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const Profile = sequelize.define(
-  "Profile",
+class Profile extends Model {}
+
+Profile.init(
   {
-    // Define the columns of the Profile table
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -32,7 +27,9 @@ const Profile = sequelize.define(
     },
   },
   {
-    tableName: "profiles",
+    sequelize,
+    modelName: "Profile",
+    tableName: "Profiles",
   }
 );
 

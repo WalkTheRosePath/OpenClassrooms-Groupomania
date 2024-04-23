@@ -1,17 +1,12 @@
-// Server-side user model
+// Server-side user model (user.js)
 
-const { DataTypes } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const User = sequelize.define(
-  "User",
+class User extends Model {}
+
+User.init(
   {
-    // Define the columns of the User table
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,9 +26,10 @@ const User = sequelize.define(
     },
   },
   {
+    sequelize, 
+    modelName: "User", 
     tableName: "Users", 
   }
 );
 
 module.exports = User;
-

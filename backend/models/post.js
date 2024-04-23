@@ -1,27 +1,26 @@
-// Server-side post model
+// Server-side post model (post.js)
 
-"use strict";
-const { Model } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/database");
 
-module.exports = (sequelize, DataTypes) => {
-  class Post extends Model {
-    static associate(models) {
-      Post.belongsTo(models.User, { foreignKey: "userId" }); 
-    }
+class Post extends Model {
+  static associate(models) {
+    Post.belongsTo(models.User, { foreignKey: "userId" }); 
   }
+}
 
-  Post.init(
-    {
-      title: DataTypes.STRING, 
-      content: DataTypes.TEXT, 
-      multimediaUrl: DataTypes.STRING, 
-      userId: DataTypes.INTEGER, 
-    },
-    {
-      sequelize,
-      modelName: "Post",
-    }
-  );
+Post.init(
+  {
+    title: DataTypes.STRING,
+    content: DataTypes.TEXT,
+    multimediaUrl: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+  },
+  {
+    sequelize,
+    modelName: "Post",
+    tableName: "Posts", 
+  }
+);
 
-  return Post;
-};
+module.exports = Post;
