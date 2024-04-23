@@ -25,7 +25,7 @@ const NavBar = () => {
           <Link to="/profile">View Profile</Link>
         </li>
         <li>
-          <Link to="/logout">Log Out</Link>
+          <Link to="/">Log Out</Link>
         </li>
       </ul>
     </nav>

@@ -1,10 +1,52 @@
 /* Client-side stylesheet for pages and components (App.css)*/
 
-main {
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: #ffd7d7;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  padding: 0.5em 1em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #fd2d01;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+
+form label {
+  font-weight: bold;
+}
+
+footer {
   text-align: center;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  background-color: #ffffff;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: #ffd7d7;
+  background-color: #fd2d01;
 }
 
 h1 {
@@ -19,56 +61,32 @@ h2 {
   font-size: 30px;
 }
 
-p {
-  font-size: 14px;
-} 
-
-button {
-  background-color: #ffd7d7; 
-  color: #000000; 
-  font-weight: bold;
-  border: none; 
-  padding: 0.5em 1em; 
-  cursor: pointer; 
-  border-radius: 5px; 
-}
-
-button:hover {
-  background-color: #fd2d01; 
-}
-
 .header-container img {
   height: 100px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-bottom: 1em;
-}
 
-.form-group input,
-.form-group textarea {
-  width: 100%; 
-  padding: 0.5em; 
-  box-sizing: border-box; 
-}
-
-footer {
+main {
   text-align: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  color: #ffd7d7;
-  background-color: #fd2d01;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  background-color: #ffffff;
+}
+
+p {
+  font-size: 14px;
 }
 
 /* Media Query for Mobile Phones */
 @media (max-width: 767px) {
+  .form-group {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+  }
+
   h1 {
-    font-size: 30px;
+    font-size: 36px;
   }
 
   h2 {

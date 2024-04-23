@@ -13,7 +13,7 @@ const SignUpPage = () => {
       <h1>Sign Up</h1>
       <main>
         <SignUpForm />
-        <Link to="/">Already have an account? Log in here.</Link>
+        <Link to="/">Already have an account? Click here to log in.</Link>
       </main>
       <Footer />
     </div>
