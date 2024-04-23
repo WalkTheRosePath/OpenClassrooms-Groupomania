@@ -1,23 +1,18 @@
 // backend/routes/postRoutes.js
 // Server-side routes for managing posts
 
+// Import Express and create a router instance
 const express = require("express");
 const router = express.Router();
+
+// Import post controller
 const postController = require("../controllers/postController");
 
-// Route for getting all posts
+// Define HTTP routes
 router.get("/", postController.getAllPosts);
-
-// Route for creating a new post
 router.post("/", postController.createPost);
-
-// Route for getting a post by ID
 router.get("/:postId", postController.getPostById);
-
-// Route for updating a post by ID
 router.put("/:postId", postController.updatePost);
-
-// Route for deleting a post by ID
 router.delete("/:postId", postController.deletePost);
 
 module.exports = router;

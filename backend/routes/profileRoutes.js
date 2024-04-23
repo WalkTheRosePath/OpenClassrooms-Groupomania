@@ -1,17 +1,16 @@
 // backend/routes/profileRoutes.js
 // Server-side routes for managing profiles (profile.js)
 
+// Import Express and create a router instance
 const express = require("express");
 const router = express.Router();
+
+// Import profile controller
 const profileController = require("../controllers/profileController");
 
-// Route for getting user profile by ID
+// Define HTTP routes
 router.get("/:userId", profileController.getUserProfile);
-
-// Route for updating user profile by ID
 router.put("/:userId", profileController.updateUserProfile);
-
-// Route for deleting user profile by ID
 router.delete("/:userId", profileController.deleteUserProfile);
 
 module.exports = router;
