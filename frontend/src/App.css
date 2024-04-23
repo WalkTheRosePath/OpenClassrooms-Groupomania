@@ -80,7 +80,7 @@ main {
 }
 
 .nav-links a {
-  text-decoration: none; 
+  text-decoration: none;
   color: #fd2d01;
   font-size: 14px;
 }
@@ -107,5 +107,13 @@ p {
 
   .header-container img {
     height: 80px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .nav-links li {
+    padding: 10px;
   }
 }
