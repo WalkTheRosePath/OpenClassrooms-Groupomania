@@ -43,4 +43,6 @@ const UserProfilePage = () => {
   );
 };
 
+// TODO Add delete user button
+
 export default UserProfilePage;

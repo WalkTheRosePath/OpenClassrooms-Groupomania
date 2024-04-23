@@ -16,6 +16,8 @@ const UserController = {
       .then((hash) => {
         // Create a new user instance with hashed password
         const user = new User({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
           email: req.body.email,
           password: hash,
         });

@@ -26,7 +26,7 @@ const SignUpForm = () => {
     e.preventDefault();
     try {
       // Send sign-up request to the backend with formData using Axios
-      const response = await axios.post("/api/auth/signup", formData);
+      const response = await axios.post("http://localhost:3000/api/auth/signup", formData);
 
       // Log the response data for debugging
       console.log(response.data);

@@ -16,13 +16,13 @@ const LogInForm = () => {
     e.preventDefault();
     try {
       // Send login request to the backend with formData using Axios
-      const response = await axios.post("/api/auth/login", formData);
+      const response = await axios.post("http://localhost:3000/api/auth/login", formData);
 
       // Log the response data for debugging
       console.log(response.data);
 
       // Redirect to the HomePage upon successful login
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       // Handle authentication error (e.g., invalid credentials)
       alert("Invalid email or password. Please try again.");

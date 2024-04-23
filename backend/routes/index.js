@@ -7,12 +7,10 @@ const router = express.Router();
 
 // Import route modules
 const postRoutes = require("./postRoutes");
-const profileRoutes = require("./profileRoutes");
 const userRoutes = require("./userRoutes");
 
 // Use route modules
-router.use("/post", postRoutes);
-router.use("/profile", profileRoutes);
+router.use("/posts", postRoutes);
 router.use("/auth", userRoutes);
 
 // Export router

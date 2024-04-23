@@ -8,10 +8,13 @@ const router = express.Router();
 // Import user controller
 const { userController } = require("../controllers");
 
+// TODO Add auth to routes that are protected (delete user)
+
 // Define HTTP routes
 router.post("/signup", userController.signup);
 router.post("/login", userController.login);
-router.get("/logout", userController.logout);
+
+// TODO Add delete user route
 
 // Export router
 module.exports = router;

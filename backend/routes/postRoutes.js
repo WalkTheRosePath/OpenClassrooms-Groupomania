@@ -8,6 +8,8 @@ const router = express.Router();
 // Import post controller
 const { postController } = require("../controllers");
 
+// TODO Add auth to routes that are protected
+
 // Define HTTP routes
 router.get("/", postController.getAllPosts);
 router.post("/", postController.createPost);
