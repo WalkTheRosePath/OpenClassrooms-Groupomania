@@ -1,6 +1,7 @@
 // backend/routes/index.js
 // Server-side import and export all route files
 
+// Import Express and create a router instance
 const express = require("express");
 const router = express.Router();
 
