@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
@@ -27,6 +28,7 @@ const HomePage = () => {
     <div>
       <Header />
       <h1>Home Page</h1>
+      <NavBar />
       {/* Display list of posts */}
       <main>
         {posts.map((post) => (

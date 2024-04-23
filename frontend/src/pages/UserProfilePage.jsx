@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 const UserProfilePage = () => {
@@ -30,6 +31,7 @@ const UserProfilePage = () => {
     <div>
       <Header />
       <h1>User Profile</h1>
+      <NavBar />
       <main>
         <p>
           Name: {user.firstName} {user.lastName}

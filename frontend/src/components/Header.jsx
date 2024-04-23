@@ -13,7 +13,6 @@ const Header = () => {
           <img className="logo-img" src="/icon.png" alt="Groupomania Logo" />
         </Link>
       </div>
-      <NavBar />
     </header>
   );
 };

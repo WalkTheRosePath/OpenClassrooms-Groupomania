@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 const PostDetailsPage = () => {
@@ -42,6 +43,7 @@ const PostDetailsPage = () => {
     <div>
       <Header />
       <h1>Post Details</h1>
+      <NavBar />
       <main>
         <div className="post-details-container">
           {isLoading && <div>Loading...</div>}
