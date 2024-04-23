@@ -11,7 +11,7 @@ const NavBar = () => {
   // Function to determine whether to show the NavBar
   const shouldShowNavBar = () => {
     // Check if the current pathname is '/' or '/signup'
-    return !["/", "/signup"].includes(pathname);
+    return !["/login", "/signup"].includes(pathname);
   };
 
   // Render the NavBar only if it should be shown
@@ -25,7 +25,7 @@ const NavBar = () => {
           <Link to="/profile">View Profile</Link>
         </li>
         <li>
-          <Link to="/">Log Out</Link>
+          <Link to="/login">Log Out</Link>
         </li>
       </ul>
     </nav>
