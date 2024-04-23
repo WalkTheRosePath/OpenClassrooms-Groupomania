@@ -3,7 +3,7 @@
 // Such as fetching, updating, and deleting user profiles
 
 // Import necessary modules
-const User = require("../models/user");
+const User = require("../models/userModel");
 
 // Controller function to get user profile
 exports.getUserProfile = async (req, res) => {

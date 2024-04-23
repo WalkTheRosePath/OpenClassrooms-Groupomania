@@ -1,4 +1,4 @@
-// backend/models/user.js
+// backend/models/userModel.js
 // Server-side sequelize model file defining the user schema
 
 const { Model, DataTypes } = require("sequelize");

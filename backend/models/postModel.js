@@ -1,4 +1,4 @@
-// backend/models/post.js
+// backend/models/postModel.js
 // Server-side sequelize model file defining the post schema and its associations
 
 const { Model, DataTypes } = require("sequelize");
