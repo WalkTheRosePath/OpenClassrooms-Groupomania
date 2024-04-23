@@ -1,9 +1,5 @@
 /* Client-side stylesheet for pages and components (App.css)*/
 
-a {
-  text-decoration: none;
-}
-
 button {
   background-color: #ffd7d7;
   color: #000000;
@@ -84,7 +80,9 @@ main {
 }
 
 .nav-links a {
-  color: #000; 
+  text-decoration: none; 
+  color: #fd2d01;
+  font-size: 14px;
 }
 
 p {
