@@ -19,7 +19,9 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`/api/post/${postId}`);
+        const response = await axios.get(
+          `http://localhost:3000/api/posts/${postId}`
+        );
         setPost(response.data);
         setIsLoading(false);
       } catch (error) {

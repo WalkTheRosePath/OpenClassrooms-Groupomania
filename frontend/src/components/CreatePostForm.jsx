@@ -40,7 +40,7 @@ const CreatePostForm = () => {
       postData.append("multimedia", formData.multimedia);
 
       // Send a POST request to create a new post using Axios
-      const response = await axios.post("/api/post", postData, {
+      const response = await axios.post("http://localhost:3000/api/posts", postData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
