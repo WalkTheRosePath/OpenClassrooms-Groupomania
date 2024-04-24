@@ -6,6 +6,7 @@ const express = require("express");
 const router = express.Router();
 const { postController } = require("../controllers");
 const authMiddleware = require("../middleware/authMiddleware");
+const multerMiddleware = require("../middleware/multerMiddleware");
 
 // Define HTTP routes
 router.get("/", postController.getAllPosts);
