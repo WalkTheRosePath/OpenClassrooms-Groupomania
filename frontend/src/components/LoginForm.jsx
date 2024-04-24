@@ -19,8 +19,11 @@ const LogInForm = () => {
       // Send login request to the backend with formData using Axios
       const response = await axios.post("http://localhost:3000/api/auth/login", formData);
 
-      // Log the response data for debugging
-      console.log(response.data);
+      // Check if the response contains a token
+      if (response.data.token) {
+        // Store the token in local storage
+        localStorage.setItem("token", response.data.token);
+      }
 
       // Redirect to the HomePage upon successful login
       navigate("/");
