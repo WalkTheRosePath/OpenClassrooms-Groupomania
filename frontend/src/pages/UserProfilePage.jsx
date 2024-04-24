@@ -14,7 +14,7 @@ const UserProfilePage = () => {
       try {
         // Fetch user data from the backend API using Axios
         const response = await axios.get(
-          "http://localhost:3000/api/user/profile"
+          "http://localhost:3000/api/auth/profile"
         ); 
         setUser(response.data);
       } catch (error) {
