@@ -1,9 +1,9 @@
 // backend/controllers/postController.js
 // Server-side controller functions for handling post-related operations
-// Such as creating, retrieving, updating, and deleting posts
 
 // Import necessary modules
 const { Post } = require("../models");
+// const multerMiddleware = require("../middleware/multerMiddleware");
 
 // PostController object with controller functions
 const PostController = {
@@ -11,6 +11,15 @@ const PostController = {
   async createPost(req, res) {
     try {
       const { title, content, multimediaUrl, userId } = req.body;
+
+      // const { title, content, userId } = req.body;
+
+      // // Check if file was uploaded
+      // if (!req.file) {
+      //   return res.status(400).json({ error: "No file uploaded" });
+      // }
+
+      // const multimediaUrl = req.file.path;
 
       // Create a new post in the database
       const newPost = await Post.create({
