@@ -24,6 +24,7 @@ const UserProfilePage = () => {
             },
           }
         );
+        console.log("User data:", response.data);
         setUser(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
