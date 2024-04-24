@@ -10,9 +10,8 @@ const CreatePostForm = () => {
     content: "",
     multimedia: null,
   });
-
-  const navigate = useNavigate(); // Hook to navigate programmatically
-
+  // Hook to navigate programmatically
+  const navigate = useNavigate();
   // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -21,7 +20,6 @@ const CreatePostForm = () => {
       [name]: files ? files[0] : value,
     }));
   };
-
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,20 +30,21 @@ const CreatePostForm = () => {
         window.alert("Please enter a title for your post.");
         return;
       }
-
       // Create a FormData object to send the file
       const postData = new FormData();
       postData.append("title", formData.title);
       postData.append("content", formData.content);
       postData.append("multimedia", formData.multimedia);
-
       // Send a POST request to create a new post using Axios
-      const response = await axios.post("http://localhost:3000/api/posts", postData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
+      const response = await axios.post(
+        "http://localhost:3000/api/posts",
+        postData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       if (response.status === 200) {
         console.log("Post created successfully");
         // Redirect the user to the homepage
