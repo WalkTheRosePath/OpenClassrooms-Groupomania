@@ -1,21 +1,15 @@
 // frontend/src/utils/auth.js
 // Client-side authentication functions
 
-const BASE_URL = "http://localhost:3000"; // Backend server URL
+import api from "./api";
 
 const auth = {
   // Function to handle user login
   login: async (email, password) => {
     try {
-      const response = await fetch(`${BASE_URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
-      // Save the token to local storage or session storage
+      const response = await api.post("/login", { email, password });
+      const data = response.data;
+      // Save the token to local storage
       localStorage.setItem("token", data.token);
       return data;
     } catch (error) {
@@ -27,14 +21,8 @@ const auth = {
   // Function to handle user signup
   signup: async (email, password) => {
     try {
-      const response = await fetch(`${BASE_URL}/signup`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
+      const response = await api.post("/signup", { email, password });
+      const data = response.data;
       return data;
     } catch (error) {
       console.error("Signup error:", error);
@@ -44,13 +32,13 @@ const auth = {
 
   // Function to handle user logout
   logout: () => {
-    // Remove the token from local storage or session storage
+    // Remove the token from local storage
     localStorage.removeItem("token");
   },
 
   // Function to check if the user is authenticated
   isAuthenticated: () => {
-    // Check if the token exists in local storage or session storage
+    // Check if the token exists in local storage
     return localStorage.getItem("token") !== null;
   },
 
