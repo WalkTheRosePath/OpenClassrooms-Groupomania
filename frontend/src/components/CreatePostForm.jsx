@@ -30,11 +30,18 @@ const CreatePostForm = () => {
         window.alert("Please enter a title for your post.");
         return;
       }
+      // Get the user ID from the authenticated user session or token
+
+      // const userId = getUserId();
+      
       // Create a FormData object to send the file
       const postData = new FormData();
       postData.append("title", formData.title);
       postData.append("content", formData.content);
       postData.append("multimedia", formData.multimedia);
+
+      // postData.append("userId", userId);
+      
       // Send a POST request to create a new post using Axios
       const response = await axios.post(
         "http://localhost:3000/api/posts",
