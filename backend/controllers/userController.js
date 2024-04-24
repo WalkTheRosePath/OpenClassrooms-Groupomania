@@ -119,6 +119,51 @@ const UserController = {
         });
     });
   },
+
+  // Controller function to update user profile
+  updateUserProfile(req, res) {
+    const userId = req.params.userId; // Extract user ID from request parameters
+    const { firstName, lastName, email, password } = req.body; // Extract updated profile data from request body
+    // Find user by ID in the database
+    User.findByPk(userId)
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({ error: "User not found" });
+        }
+        // Update user's profile data
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = email;
+        // Hash and update password if provided
+        if (password) {
+          bcrypt.hash(password, 10).then((hash) => {
+            user.password = hash;
+            user.save(); // Save updated user data
+          });
+        } else {
+          user.save(); // Save updated user data without updating password
+        }
+        res.status(200).json({ message: "User profile updated successfully" });
+      })
+      .catch((error) => {
+        console.error("Error updating user profile:", error);
+        res.status(500).json({ error: "Failed to update user profile" });
+      });
+  },
+
+  // Controller function to delete user profile
+  deleteUserProfile(req, res) {
+    const userId = req.params.userId; // Extract user ID from request parameters
+    // Find user by ID in the database and delete it
+    User.destroy({ where: { id: userId } })
+      .then(() => {
+        res.status(200).json({ message: "User profile deleted successfully" });
+      })
+      .catch((error) => {
+        console.error("Error deleting user profile:", error);
+        res.status(500).json({ error: "Failed to delete user profile" });
+      });
+  },
 };
 
 // Export UserController object
