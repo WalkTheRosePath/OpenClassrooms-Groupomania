@@ -90,7 +90,7 @@ const UserController = {
   },
 
   // Controller function to get user profile by ID
-  getUserProfile(req, res) {
+  getUserProfileById(req, res) {
     // Extract the token from the request headers
     const token = req.headers.authorization;
     if (!token) {
@@ -121,7 +121,7 @@ const UserController = {
   },
 
   // Controller function to update user profile
-  updateUserProfile(req, res) {
+  updateUserProfileById(req, res) {
     const userId = req.params.userId; // Extract user ID from request parameters
     const { firstName, lastName, email, password } = req.body; // Extract updated profile data from request body
     // Find user by ID in the database
@@ -152,7 +152,7 @@ const UserController = {
   },
 
   // Controller function to delete user profile
-  deleteUserProfile(req, res) {
+  deleteUserProfileById(req, res) {
     const userId = req.params.userId; // Extract user ID from request parameters
     // Find user by ID in the database and delete it
     User.destroy({ where: { id: userId } })
