@@ -9,10 +9,10 @@ const authMiddleware = require("../middleware/authMiddleware");
 const multerMiddleware = require("../middleware/multerMiddleware");
 
 // Define HTTP routes
-router.get("/", postController.getAllPosts);
-router.post("/", multerMiddleware, postController.createPost);
-router.get("/:postId", postController.getPostById);
-router.put("/:postId", postController.updatePost);
+router.get("/", authMiddleware, postController.getAllPosts);
+router.post("/", authMiddleware, multerMiddleware, postController.createPost);
+router.get("/:postId", authMiddleware, postController.getPostById);
+router.put("/:postId", authMiddleware, postController.updatePost);
 router.delete("/:postId", authMiddleware, postController.deletePost);
 
 // Export router
