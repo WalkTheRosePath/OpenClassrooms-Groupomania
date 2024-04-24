@@ -15,7 +15,7 @@ const UserProfilePage = () => {
         // Fetch user data from the backend API using Axios
         const response = await axios.get(
           "http://localhost:3000/api/user/profile"
-        ); // Adjust the API endpoint accordingly
+        ); 
         setUser(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
