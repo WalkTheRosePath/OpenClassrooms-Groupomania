@@ -2,24 +2,40 @@
 // Server-side controller functions for handling post-related operations
 
 // Import necessary modules
+const jwt = require("jsonwebtoken");
 const { Post } = require("../models");
-// const multerMiddleware = require("../middleware/multerMiddleware");
+
+// Function to get the user ID from the JWT token
+const getUserId = (token) => {
+  try {
+    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    return decodedToken.userId;
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return null;
+  }
+};
 
 // PostController object with controller functions
 const PostController = {
   // Controller function to create a new post
   async createPost(req, res) {
     try {
-      const { title, content, multimediaUrl, userId } = req.body;
+      // Get the user ID from the JWT token
+      const userId = getUserId(req.headers.authorization);
+      if (!userId) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
 
-      // const { title, content, userId } = req.body;
+      const { title, content } = req.body;
+      let multimediaUrl = null;
 
-      // // Check if file was uploaded
-      // if (!req.file) {
-      //   return res.status(400).json({ error: "No file uploaded" });
-      // }
-
-      // const multimediaUrl = req.file.path;
+      // Check if file was uploaded
+      if (req.file) {
+        multimediaUrl = req.file.path;
+      } else {
+        return res.status(400).json({ error: "No file uploaded" });
+      }
 
       // Create a new post in the database
       const newPost = await Post.create({
