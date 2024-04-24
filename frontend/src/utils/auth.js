@@ -1,3 +1,4 @@
+// frontend/src/utils/auth.js
 // Client-side authentication functions
 
 const BASE_URL = "http://localhost:3000"; // Backend server URL
