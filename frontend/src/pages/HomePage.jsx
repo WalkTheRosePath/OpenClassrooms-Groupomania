@@ -1,3 +1,4 @@
+// frontend/src/pages/HomePage.jsx
 // Client-side component for the home page
 
 import React, { useEffect, useState } from "react";

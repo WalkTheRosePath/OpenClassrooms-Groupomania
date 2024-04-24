@@ -1,3 +1,4 @@
+// frontend/src/App.jsx
 // Client-side main App component that contains all the routes for the application
 
 // Import necessary modules

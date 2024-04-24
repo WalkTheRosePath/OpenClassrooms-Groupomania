@@ -1,3 +1,4 @@
+// frontend/src/components/PostDetails.jsx
 // Client-side component for the post details page
 
 import React, { useState, useEffect } from "react";

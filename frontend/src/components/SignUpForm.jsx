@@ -1,3 +1,4 @@
+// frontend/src/components/SignUpForm.jsx
 // Client-side component for the sign-up form
 
 import React, { useState } from "react";

@@ -1,3 +1,4 @@
+// frontend/src/components/LogInForm.jsx
 // Client-side component for the login form
 
 import React, { useState } from "react";
