@@ -122,7 +122,7 @@ const UserController = {
 
   // Controller function to update user profile
   updateUserProfileById(req, res) {
-    const userId = req.params.userId; // Extract user ID from request parameters
+    const userId = req.params.id; // Extract user ID from request parameters
     const { firstName, lastName, email, password } = req.body; // Extract updated profile data from request body
     // Find user by ID in the database
     User.findByPk(userId)
@@ -153,7 +153,8 @@ const UserController = {
 
   // Controller function to delete user profile
   deleteUserProfileById(req, res) {
-    const userId = req.params.userId; // Extract user ID from request parameters
+    console.log(req.params);
+    const userId = req.params.id; // Extract user ID from request parameters
     // Find user by ID in the database and delete it
     User.destroy({ where: { id: userId } })
       .then(() => {

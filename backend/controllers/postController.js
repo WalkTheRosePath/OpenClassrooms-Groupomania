@@ -70,7 +70,7 @@ const PostController = {
   // Controller function to get a post by ID
   async getPostById(req, res) {
     try {
-      const postId = req.params.postId;
+      const postId = req.params.id;
 
       // Retrieve the post by ID from the database
       const post = await Post.findByPk(postId);
@@ -90,7 +90,7 @@ const PostController = {
   // Controller function to update a post by ID
   async updatePost(req, res) {
     try {
-      const postId = req.params.postId;
+      const postId = req.params.id;
       const { title, content, multimediaUrl } = req.body;
 
       // Find the post by ID in the database
@@ -119,7 +119,7 @@ const PostController = {
   // Controller function to delete a post by ID
   async deletePost(req, res) {
     try {
-      const postId = req.params.postId;
+      const postId = req.params.id;
 
       // Delete the post by ID from the database
       await Post.destroy({ where: { id: postId } });
