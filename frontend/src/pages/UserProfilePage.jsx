@@ -15,13 +15,19 @@ const UserProfilePage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // Fetch user data from the backend API using Axios
+        const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:3000/api/auth/profile"
-        ); 
+          "http://localhost:3000/api/auth/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setUser(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
+        setUser(null);
       }
     };
 
@@ -30,8 +36,12 @@ const UserProfilePage = () => {
 
   const handleDeleteProfile = async () => {
     try {
-      // Send a DELETE request to the backend API
-      await axios.delete("http://localhost:3000/api/auth/profile");
+      const token = localStorage.getItem("token");
+      await axios.delete("http://localhost:3000/api/auth/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setRedirect(true);
     } catch (error) {
       console.error("Error deleting user profile:", error);
@@ -39,11 +49,7 @@ const UserProfilePage = () => {
   };
 
   if (redirect) {
-    return <Navigate to="/signup" replace={true} />;
-  }
-
-  if (!user) {
-    return <div>Loading...</div>;
+    return <Navigate to="/login" replace={true} />;
   }
 
   return (
@@ -56,7 +62,7 @@ const UserProfilePage = () => {
           Name: {user.firstName} {user.lastName}
         </p>
         <p>Email: {user.email}</p>
-        <button onClick={handleDeleteProfile}>Delete Profile</button> 
+        <button onClick={handleDeleteProfile}>Delete Profile</button>
         <Footer />
       </main>
     </div>
