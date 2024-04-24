@@ -88,6 +88,37 @@ const UserController = {
     // Respond with a success message
     res.status(200).json({ message: "User logged out successfully!" });
   },
+
+  // Controller function to get user profile by ID
+  getUserProfile(req, res) {
+    // Extract the token from the request headers
+    const token = req.headers.authorization;
+    if (!token) {
+      return res
+        .status(401)
+        .json({ error: "Authorization token not provided" });
+    }
+    // Verify the token
+    jwt.verify(token, "RANDOM_TOKEN_SECRET", (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ error: "Invalid or expired token" });
+      }
+      // Token is valid, extract the user ID from the decoded token
+      const userId = decoded.userId;
+      // Use the user ID to fetch the user's profile data
+      User.findByPk(userId)
+        .then((user) => {
+          if (!user) {
+            return res.status(404).json({ error: "User not found" });
+          }
+          res.status(200).json(user);
+        })
+        .catch((error) => {
+          console.error("Error getting user profile:", error);
+          res.status(500).json({ error: "Failed to get user profile" });
+        });
+    });
+  },
 };
 
 // Export UserController object
