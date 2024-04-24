@@ -27,7 +27,10 @@ const PostController = {
         return res.status(401).json({ error: "Unauthorized" });
       }
 
+      // Get the title and content from the request body
       const { title, content } = req.body;
+
+      // Set the multimedia URL to null by default  
       let multimediaUrl = null;
 
       // Check if file was uploaded
@@ -88,7 +91,7 @@ const PostController = {
   },
 
   // Controller function to update a post by ID
-  async updatePost(req, res) {
+  async updatePostById(req, res) {
     try {
       const postId = req.params.id;
       const { title, content, multimediaUrl } = req.body;
@@ -117,7 +120,7 @@ const PostController = {
   },
 
   // Controller function to delete a post by ID
-  async deletePost(req, res) {
+  async deletePostById(req, res) {
     try {
       const postId = req.params.id;
 

@@ -8,12 +8,12 @@ const { postController } = require("../controllers");
 const authMiddleware = require("../middleware/authMiddleware");
 const multerMiddleware = require("../middleware/multerMiddleware");
 
-// Define HTTP routes
+// Define HTTP routes for posts
 router.get("/", authMiddleware, postController.getAllPosts);
 router.post("/", authMiddleware, multerMiddleware, postController.createPost);
-router.get("/:postId", authMiddleware, postController.getPostById);
-router.put("/:postId", authMiddleware, postController.updatePost);
-router.delete("/:postId", authMiddleware, postController.deletePost);
+router.get("/:id", authMiddleware, postController.getPostById);
+router.put("/:id", authMiddleware, postController.updatePostById);
+router.delete("/:id", authMiddleware, postController.deletePostById);
 
 // Export router
 module.exports = router;
