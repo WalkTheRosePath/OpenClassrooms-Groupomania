@@ -10,8 +10,9 @@ const multerMiddleware = require("../middleware/multerMiddleware");
 
 // Define HTTP routes for posts
 router.get("/", authMiddleware, postController.getAllPosts);
-router.post("/", authMiddleware, multerMiddleware, postController.createPost);
 router.get("/:id", authMiddleware, postController.getPostById);
+
+router.post("/", authMiddleware, multerMiddleware, postController.createPost);
 router.put("/:id", authMiddleware, postController.updatePostById);
 router.delete("/:id", authMiddleware, postController.deletePostById);
 
