@@ -8,16 +8,9 @@ const jwt = require("jsonwebtoken");
 module.exports = (req, res, next) => {
   try {
     // Check if the request contains an authorization header
-    if (!req.headers.authorization) {
-      throw new Error("Missing authorization header");
-    }
-
-    // Extract the authorization header value
     const authHeader = req.headers.authorization;
-
-    // Check if the authorization header value is in the correct format
-    if (!authHeader.startsWith("Bearer ")) {
-      throw new Error("Invalid authorization header format");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      throw new Error("Missing or invalid authorization header");
     }
 
     // Extract the JWT token from the authorization header
@@ -29,10 +22,13 @@ module.exports = (req, res, next) => {
     // Extract the user ID from the decoded token
     const userId = decodedToken.userId;
 
-    // Check if the user ID in the request body matches the decoded user ID
-    if (req.body.userId && req.body.userId !== userId) {
-      throw new Error("Invalid user ID in request body");
-    }
+    // Log the extracted token and user ID
+    console.log("JWT token:", token);
+    console.log("User ID:", userId);
+
+    // Attach the user ID to the request object
+    req.userId = userId;
+
     // Proceed to the next middleware if authentication is successful
     next();
   } catch (error) {

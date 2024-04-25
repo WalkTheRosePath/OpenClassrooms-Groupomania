@@ -23,6 +23,8 @@ const PostController = {
     try {
       // Get the user ID from the JWT token
       const userId = getUserId(req.headers.authorization);
+      console.log("User ID:", userId);
+
       if (!userId) {
         return res.status(401).json({ error: "Unauthorized" });
       }
