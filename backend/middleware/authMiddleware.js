@@ -12,8 +12,16 @@ module.exports = (req, res, next) => {
       throw new Error("Missing authorization header");
     }
 
+    // Extract the authorization header value
+    const authHeader = req.headers.authorization;
+
+    // Check if the authorization header value is in the correct format
+    if (!authHeader.startsWith("Bearer ")) {
+      throw new Error("Invalid authorization header format");
+    }
+
     // Extract the JWT token from the authorization header
-    const token = req.headers.authorization.split(" ")[1];
+    const token = authHeader.split(" ")[1];
 
     // Verify the JWT token using the secret key
     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
