@@ -1,3 +1,4 @@
+// frontend/src/components/NavBar.jsx
 // Client-side component for the NavBar
 
 import React from "react";
@@ -14,6 +15,14 @@ const NavBar = () => {
     return !["/login", "/signup"].includes(pathname);
   };
 
+  // Function to log out the user
+  const logout = () => {
+    // Clear the token from localStorage
+    localStorage.removeItem("token");
+    // Redirect to the login page
+    window.location.href = "/login";
+  };
+
   // Render the NavBar only if it should be shown
   return shouldShowNavBar() ? (
     <nav>
@@ -25,7 +34,7 @@ const NavBar = () => {
           <Link to="/profile">View Profile</Link>
         </li>
         <li>
-          <Link to="/login">Log Out</Link>
+          <Link to="/logout" onClick={logout}>Log Out</Link>
         </li>
       </ul>
     </nav>
