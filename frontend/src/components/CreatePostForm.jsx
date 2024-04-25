@@ -1,6 +1,7 @@
+// frontend/src/components/CreatePostForm.jsx
 // Client-side component for creating a new post
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -10,8 +11,18 @@ const CreatePostForm = () => {
     content: "",
     multimedia: null,
   });
-  // Hook to navigate programmatically
+  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Get the user ID from local storage
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId);
+    } else {
+      console.error("User ID not found in local storage");
+    }
+  }, []);
 
   // Function to handle changes in form fields
   const handleChange = (e) => {
@@ -38,6 +49,7 @@ const CreatePostForm = () => {
       postData.append("title", formData.title);
       postData.append("content", formData.content);
       postData.append("multimedia", formData.multimedia);
+      postData.append("userId", userId);
 
       // Send a POST request to create a new post using Axios
       const response = await axios.post(
