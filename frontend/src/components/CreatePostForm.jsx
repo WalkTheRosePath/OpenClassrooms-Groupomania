@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import jwt from "jsonwebtoken";
 
 const CreatePostForm = () => {
   const [formData, setFormData] = useState({
@@ -23,17 +22,6 @@ const CreatePostForm = () => {
     }));
   };
 
-  // Function to get the user ID from the JWT token
-  const getUserId = (token) => {
-    try {
-      const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
-      return decodedToken.userId;
-    } catch (error) {
-      console.error("Error decoding token:", error);
-      return null;
-    }
-  };
-
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,15 +33,11 @@ const CreatePostForm = () => {
         return;
       }
 
-      // Get the user ID from the JWT token
-      const userId = getUserId();
-
       // Create a FormData object to send the file
       const postData = new FormData();
       postData.append("title", formData.title);
       postData.append("content", formData.content);
       postData.append("multimedia", formData.multimedia);
-      postData.append("userId", userId);
 
       // Send a POST request to create a new post using Axios
       const response = await axios.post(
