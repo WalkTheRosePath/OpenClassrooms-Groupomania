@@ -10,7 +10,6 @@ const authMiddleware = require("../middleware/authMiddleware");
 // Define HTTP routes for user authentication
 router.post("/signup", userController.signup);
 router.post("/login", userController.login);
-router.get("/logout", authMiddleware, userController.logout);
 
 // Define HTTP routes for user profile
 router.get("/profile/:id", authMiddleware, userController.getUserProfileById);
