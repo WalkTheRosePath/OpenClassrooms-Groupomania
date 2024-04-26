@@ -2,92 +2,141 @@
 // Server-side controller functions for handling post-related operations
 
 // Import necessary modules
-const fs = require("fs");
+const jwt = require("jsonwebtoken");
 const { Post } = require("../models");
-const utils = require("../utils");
-const { error } = require("console");
 
-// Controller function to create a new post based on the data received in the request body
-exports.createPost = (req, res) => {
-  // Create a new post with the data received in the request body
-  const postDocument = new Post({
-    ...JSON.parse(req.body.post),
-    multimediaUrl: utils.getMultimediaUrl(req),
-  });
-  // Save the post to the database
-  postDocument.save()
-    .then((doc) => {
-      res.status(201).json({ post: doc, message: "Post created successfully" });
-    })
-    .catch((error) => {
-      // Handle errors
-      res.status(400).json({ error: error.message });
-    });
-};
-
-// Controller function to get all posts
-exports.getAllPosts = async (req, res) => {
+// Function to get the user ID from the JWT token
+const getUserId = (token) => {
   try {
-    // Get all posts
-    const posts = await Post.findAll();
-    // Send the response
-    res.status(200).json({ posts });
-  } catch (err) {
-    // Handle errors
-    res.status(400).json({ error: err.message });
+    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    return decodedToken.userId;
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return null;
   }
 };
 
-// Controller function to get a single post by ID
-exports.getPostById = async (req, res) => {
-  try {
-    // Get the post ID from the request parameters
-    const { id } = req.params;
-    // Find the post by ID
-    const post = await Post.findByPk(id);
-    // Send the response
-    res.status(200).json({ post });
-  } catch (err) {
-    // Handle errors
-    res.status(400).json({ error: err.message });
-  }
+// PostController object with controller functions
+const PostController = {
+  // Controller function to create a new post
+  async createPost(req, res) {
+    try {
+      // Get the user ID from the JWT token
+      const userId = getUserId(req.headers.authorization);
+      console.log("User ID:", userId);
+
+      if (!userId) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+
+      // Get the title and content from the request body
+      const { title, content } = req.body;
+
+      // Set the multimedia URL to null by default  
+      let multimediaUrl = null;
+
+      // Check if file was uploaded
+      if (req.file) {
+        multimediaUrl = req.file.path;
+      } else {
+        return res.status(400).json({ error: "No file uploaded" });
+      }
+
+      // Create a new post in the database
+      const newPost = await Post.create({
+        title,
+        content,
+        multimediaUrl,
+        userId,
+      });
+
+      // Respond with the created post
+      res.status(201).json(newPost);
+    } catch (error) {
+      console.error("Error creating post:", error);
+      res.status(500).json({ error: "Failed to create post" });
+    }
+  },
+
+  // Controller function to get all posts
+  async getAllPosts(req, res) {
+    try {
+      // Retrieve all posts from the database
+      const posts = await Post.findAll();
+
+      // Respond with the list of posts
+      res.json(posts);
+    } catch (error) {
+      console.error("Error getting posts:", error);
+      res.status(500).json({ error: "Failed to get posts" });
+    }
+  },
+
+  // Controller function to get a post by ID
+  async getPostById(req, res) {
+    try {
+      const postId = req.params.id;
+
+      // Retrieve the post by ID from the database
+      const post = await Post.findByPk(postId);
+
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+
+      // Respond with the found post
+      res.json(post);
+    } catch (error) {
+      console.error("Error getting post by ID:", error);
+      res.status(500).json({ error: "Failed to get post" });
+    }
+  },
+
+  // Controller function to update a post by ID
+  async updatePostById(req, res) {
+    try {
+      const postId = req.params.id;
+      const { title, content, multimediaUrl } = req.body;
+
+      // Find the post by ID in the database
+      const post = await Post.findByPk(postId);
+
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+
+      // Update the post with the new data
+      post.title = title;
+      post.content = content;
+      post.multimediaUrl = multimediaUrl;
+
+      // Save the updated post to the database
+      await post.save();
+
+      // Respond with the updated post
+      res.json(post);
+    } catch (error) {
+      console.error("Error updating post:", error);
+      res.status(500).json({ error: "Failed to update post" });
+    }
+  },
+
+  // Controller function to delete a post by ID
+  async deletePostById(req, res) {
+    try {
+      const postId = req.params.id;
+
+      // Delete the post by ID from the database
+      await Post.destroy({ where: { id: postId } });
+
+      // Respond with success message
+      res.json({ message: "Post deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      res.status(500).json({ error: "Failed to delete post" });
+    }
+  },
 };
 
-// Controller function to modify a post by ID
-exports.modifyPostById = async (req, res) => {
-  try {
-    // Get the post ID from the request parameters
-    const { id } = req.params;
-    // Get the post data from the request body
-    const { title, content, multimediaUrl } = req.body;
-    // Find the post by ID
-    const post = await Post.findByPk(id);
-    // Update the post
-    post.title = title;
-    post.content = content;
-    post.multimediaUrl = multimediaUrl;
-    await post.save();
-    // Send the response
-    res.status(200).json({ post });
-  } catch (err) {
-    // Handle errors
-    res.status(400).json({ error: err.message });
-  }
-};
-
-// Controller function to delete a post by ID
-exports.deletePostById = async (req, res) => {
-  try {
-    // Get the post ID from the request parameters
-    const { id } = req.params;
-    // Find the post by ID
-    const post = await Post.findByPk(id);
-    // Delete the post
-    await post.destroy();
-    // Send the response
-    res.status(204).end();
-  } catch (err) {
-    // Handle errors
-    res.status(400).json({ error: err.message });
-  }
-};
+// Export PostController
+module.exports = PostController;
