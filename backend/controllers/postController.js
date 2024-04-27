@@ -8,15 +8,15 @@ const { Post } = require("../models");
 // PostController object with controller functions
 const PostController = {
   // Controller function to get all posts
-  getAllPosts(req, res) {
-    Post.find()
-      .then((posts) => {
-        res.status(200).json(posts);
-      })
-      .catch((error) => {
-        console.error("Error getting posts:", error);
-        res.status(500).json({ error: "Failed to get posts" });
-      });
+  async getAllPosts(req, res) {
+    try {
+      // Retrieve all posts from the database
+      const posts = await Post.findAll();
+      res.json(posts);
+    } catch (error) {
+      console.error("Error getting posts:", error);
+      res.status(500).json({ error: "Failed to get posts" });
+    }    
   },
 
   // Controller function to get a post by post ID
