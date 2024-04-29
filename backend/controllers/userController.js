@@ -86,7 +86,7 @@ const UserController = {
   // Controller function to get user profile by ID
   async getUserProfileById(req, res) {
     try {
-      const userId = req.params.id; // Extract user ID from request parameters
+      const userId = req.userId; // Extract user ID from request object
       // Find user by ID in the database
       const user = await User.findByPk(userId);
       // If user is not found, return an error message
