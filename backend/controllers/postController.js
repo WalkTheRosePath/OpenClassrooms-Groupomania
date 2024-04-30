@@ -39,12 +39,22 @@ const PostController = {
       // Get the user ID from the request object
       const userId = req.userId;
 
+      let postData;
+
+      if (req.file) {
+        postData = JSON.parse(req.body.post);
+      } else {
+        postData = req.body;
+      }
+
       // Destructure the title, content, and multimedia URL from the request body
-      const { title, content, multimediaUrl } = req.body;
+      const { title, content, multimediaUrl } = postData;
 
       // Check if the title is empty
       if (!title || !content) {
-        return res.status(400).json({ error: "Title and content are required fields." });
+        return res
+          .status(400)
+          .json({ error: "Title and content are required fields." });
       }
 
       // Create a new post using user ID and post data

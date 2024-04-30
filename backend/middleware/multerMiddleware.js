@@ -17,7 +17,7 @@ const mimeTypes = {
 const storage = multer.diskStorage({
     // Specify destination directory for storing files
     destination: (req, file, callback) => {
-        callback(null, 'images');
+        callback(null, 'uploads');
     },
     // Define filename format for uploaded files
     filename: (req, file, callback) => {
@@ -31,4 +31,4 @@ const storage = multer.diskStorage({
 });
 
 // Export Multer middleware configured with storage settings for single file uploads
-module.exports = multer({ storage: storage }).single('image');
+module.exports = multer({ storage: storage }).single('media');
