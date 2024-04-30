@@ -1,8 +1,7 @@
-// // backend/controllers/postController.js
-// // Server-side controller functions for handling post-related operations
+// backend/controllers/postController.js
+// Server-side controller functions for handling post-related operations
 
 // Import necessary modules
-const jwt = require("jsonwebtoken");
 const { Post } = require("../models");
 
 // PostController object with controller functions
@@ -20,87 +19,96 @@ const PostController = {
   },
 
   // Controller function to get a post by post ID
-  getPostById(req, res) {
+  async getPostById(req, res) {
     const postId = req.params.id;
-    Post.findById(postId)
-      .then((post) => {
-        if (!post) {
-          return res.status(404).json({ error: "Post not found" });
-        }
-        res.status(200).json(post);
-      })
-      .catch((error) => {
-        console.error("Error getting post by ID:", error);
-        res.status(500).json({ error: "Failed to get post" });
-      });
+    try {
+      const post = await Post.findByPk(postId);
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+      res.status(200).json(post);
+    } catch (error) {
+      console.error("Error getting post by ID:", error);
+      res.status(500).json({ error: "Failed to get post" });
+    }
   },
 
   // Controller function to create a new post
-  createPost(req, res) {
-    const { title, content, multimediaUrl } = req.body;
-    const userId = req.user._id;
+  async createPost(req, res) {
+    try {
+      // Get the user ID from the request object
+      const userId = req.userId;
 
-    const newPost = new Post({
-      title,
-      content,
-      multimediaUrl,
-      userId,
-    });
+      // Destructure the title, content, and multimedia URL from the request body
+      const { title, content, multimediaUrl } = req.body;
 
-    newPost
-      .save()
-      .then((post) => {
-        res.status(201).json({ message: "Post created successfully", post });
-      })
-      .catch((error) => {
-        console.error("Error creating post:", error);
-        res.status(500).json({ error: "Failed to create post" });
+      // Check if the title is empty
+      if (!title || !content) {
+        return res.status(400).json({ error: "Title and content are required fields." });
+      }
+
+      // Create a new post using user ID and post data
+      const newPost = await Post.create({
+        title,
+        content,
+        multimediaUrl: multimediaUrl || null, // Set multimedia URL to null if not provided
+        userId,
       });
+
+      // Respond with the created post
+      res.status(201).json(newPost);
+    } catch (error) {
+      console.error("Error creating post:", error);
+      res.status(500).json({ error: "Failed to create post. Please try again later." });
+    }
   },
 
   // Controller function to update a post by post ID
-  updatePostById(req, res) {
+  async updatePostById(req, res) {
     const postId = req.params.id;
     const { title, content, multimediaUrl } = req.body;
 
-    Post.findById(postId)
-      .then((post) => {
-        if (!post) {
-          return res.status(404).json({ error: "Post not found" });
-        }
+    //Check if the title, content, or multimedia URL is present
+    if (!title && !content && !multimediaUrl) {
+      return res.status(400).json({ error: "Title, content, or multimedia URL is required." });
+    }
 
-        post.title = title;
-        post.content = content;
-        post.multimediaUrl = multimediaUrl;
+    try {
+      // Find the post by ID
+      const post = await Post.findByPk(postId);
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
 
-        return post.save();
-      })
-      .then((updatedPost) => {
-        res
-          .status(200)
-          .json({ message: "Post updated successfully", updatedPost });
-      })
-      .catch((error) => {
-        console.error("Error updating post:", error);
-        res.status(500).json({ error: "Failed to update post" });
-      });
+      // Update the post with the new data if present
+      if (title) post.title = title;
+      if (content) post.content = content;
+      if (multimediaUrl) post.multimediaUrl = multimediaUrl;
+
+      // Save the updated post
+      const updatedPost = await post.save();
+      res.status(200).json({ message: "Post updated successfully", updatedPost });
+    } catch (error) {
+      console.error("Error updating post:", error);
+      res.status(500).json({ error: "Failed to update post" });
+    }
   },
 
   // Controller function to delete a post by post ID
-    deletePostById(req, res) { 
-        const postId = req.params.id;
-        Post.findByIdAndDelete(postId)
-            .then(deletedPost => {
-                if (!deletedPost) {
-                    return res.status(404).json({ error: "Post not found" });
-                }
-                res.status(200).json({ message: "Post deleted successfully" });
-            })
-            .catch(error => {
-                console.error("Error deleting post:", error);
-                res.status(500).json({ error: "Failed to delete post" });
-            });
-    }
+  async deletePostById(req, res) {
+    const postId = req.params.id;
+    try {
+      // Find the post by ID
+      const deletedPost = await Post.destroy({ where: { id: postId } });
+      if (!deletedPost) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+      res.status(200).json({ message: "Post deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      res.status(500).json({ error: "Failed to delete post" });
+    }   
+  }
 };
 
 module.exports = PostController;
