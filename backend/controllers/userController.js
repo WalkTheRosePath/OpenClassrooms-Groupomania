@@ -87,8 +87,14 @@ const UserController = {
   async getUserProfileById(req, res) {
     try {
       const userId = req.userId; // Extract user ID from request object
+
       // Find user by ID in the database
-      const user = await User.findByPk(userId);
+      const user = await User.findByPk(userId, {
+        attributes: {
+          exclude: ["password"],
+        },
+      });
+
       // If user is not found, return an error message
       if (!user) {
         return res.status(404).json({ error: "User not found" });
