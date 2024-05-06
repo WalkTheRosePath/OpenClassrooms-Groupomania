@@ -2,8 +2,8 @@
 // Client-side component for creating a new post
 
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CreatePostForm = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ const CreatePostForm = () => {
       if (response.status >= 200 && response.status < 300) {
         console.log("Post created successfully");
         // Redirect the user to the homepage
-        navigate("/home");
+        navigate("/");
       } else {
         console.error("Failed to create post:", response.statusText);
       }
