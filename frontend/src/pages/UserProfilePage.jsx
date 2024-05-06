@@ -9,15 +9,16 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 const UserProfilePage = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("userId");
         const response = await axios.get(
-          "http://localhost:3000/api/auth/profile",
+          `http://localhost:3000/api/auth/profile/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

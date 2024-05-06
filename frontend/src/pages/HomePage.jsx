@@ -15,7 +15,11 @@ const HomePage = () => {
     // Fetch posts data from the backend API
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/posts");
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        };
+        const response = await axios.get("http://localhost:3000/api/posts", { headers });
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
