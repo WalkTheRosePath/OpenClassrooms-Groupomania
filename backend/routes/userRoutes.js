@@ -7,13 +7,10 @@ const router = express.Router();
 const { userController } = require("../controllers");
 const authMiddleware = require("../middleware/authMiddleware");
 
-// Define HTTP routes for user authentication
+// Define HTTP routes for users
 router.post("/signup", userController.signup);
 router.post("/login", userController.login);
-
-// Define HTTP routes for user profile
 router.get("/profile/:id", authMiddleware, userController.getUserProfileById);
-router.put("/profile/:id", authMiddleware, userController.updateUserProfileById);
 router.delete("/profile/:id", authMiddleware, userController.deleteUserProfileById);
 
 // Export router

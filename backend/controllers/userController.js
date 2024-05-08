@@ -107,30 +107,6 @@ const UserController = {
     }
   },
 
-  // Controller function to update user profile by ID
-  async updateUserProfileById(req, res) {
-    try {
-      const userId = req.params.id; // Extract user ID from request parameters
-      // Find user by ID in the database
-      const user = await User.findByPk(userId);
-      // If user is not found, return an error message
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-      // Update user profile with new data
-      user.firstName = req.body.firstName;
-      user.lastName = req.body.lastName;
-      user.email = req.body.email;
-      // Save the updated user profile to the database
-      await user.save();
-      // Return the updated user profile
-      res.json(user);
-    } catch (error) {
-      console.error("Error updating user profile:", error);
-      res.status(500).json({ error: "Failed to update user profile" });
-    }
-  },
-
   // Controller function to delete user profile by ID
   deleteUserProfileById(req, res) {
     console.log(req.params);
