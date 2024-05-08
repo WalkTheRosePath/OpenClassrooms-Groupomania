@@ -18,8 +18,8 @@ app.use(express.json());
 // Use the cors middleware
 app.use(cors());
 
-// Serve static images
-app.use("/images", express.static(path.join(__dirname, "images")));
+// Serve static uploads
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Mount routes from the index file
 app.use("/api", routes);
