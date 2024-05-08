@@ -6,34 +6,7 @@ const { Post } = require("../models");
 
 // PostController object with controller functions
 const PostController = {
-  // Controller function to get all posts
-  async getAllPosts(req, res) {
-    try {
-      // Retrieve all posts from the database
-      const posts = await Post.findAll();
-      res.json(posts);
-    } catch (error) {
-      console.error("Error getting posts:", error);
-      res.status(500).json({ error: "Failed to get posts" });
-    }    
-  },
-
-  // Controller function to get a post by post ID
-  async getPostById(req, res) {
-    const postId = req.params.id;
-    try {
-      const post = await Post.findByPk(postId);
-      if (!post) {
-        return res.status(404).json({ error: "Post not found" });
-      }
-      res.status(200).json(post);
-    } catch (error) {
-      console.error("Error getting post by ID:", error);
-      res.status(500).json({ error: "Failed to get post" });
-    }
-  },
-
-  // Controller function to create a new post
+    // Controller function to create a new post
   async createPost(req, res) {
     try {
       // Get the user ID from the request object
@@ -72,7 +45,33 @@ const PostController = {
       res.status(500).json({ error: "Failed to create post. Please try again later." });
     }
   },
+  
+  // Controller function to get all posts
+  async getAllPosts(req, res) {
+    try {
+      // Retrieve all posts from the database
+      const posts = await Post.findAll();
+      res.json(posts);
+    } catch (error) {
+      console.error("Error getting posts:", error);
+      res.status(500).json({ error: "Failed to get posts" });
+    }
+  },
 
+  // Controller function to get a post by post ID
+  async getPostById(req, res) {
+    const postId = req.params.id;
+    try {
+      const post = await Post.findByPk(postId);
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+      res.status(200).json(post);
+    } catch (error) {
+      console.error("Error getting post by ID:", error);
+      res.status(500).json({ error: "Failed to get post" });
+    }
+  },
 };
 
 module.exports = PostController;
