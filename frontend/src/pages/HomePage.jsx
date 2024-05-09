@@ -2,13 +2,14 @@
 // Client-side component for the home page
 
 import React, { useEffect, useState } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-const HomePage = () => {
+const BaseHomePage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -52,25 +53,9 @@ const HomePage = () => {
   );
 };
 
-// Function to check if user is logged in
-function ProtectedRoute({ component: Component, ...rest }) {
-  const token = localStorage.getItem("token");
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        token ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
-    />
-  );
-}
 
 // Assign the HomePage component to the default export
-const ProtectedHomePage = () => <ProtectedRoute path="/" component={HomePage} />; 
+const HomePage = () => <ProtectedRoute path="/" component={BaseHomePage} />; 
 
 // Export the HomePage component
-export default ProtectedHomePage;
+export default HomePage;
