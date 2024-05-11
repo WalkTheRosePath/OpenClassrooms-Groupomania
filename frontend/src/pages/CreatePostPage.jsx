@@ -5,8 +5,9 @@ import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import CreatePostForm from "../components/CreatePostForm";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-const CreatePostPage = () => {
+const BaseCreatePostPage = () => {
   return (
     <div>
       <Header />
@@ -19,5 +20,8 @@ const CreatePostPage = () => {
     </div>
   );
 };
+
+// Export the protected create post page
+const CreatePostPage = () => <ProtectedRoute component={BaseCreatePostPage} />; 
 
 export default CreatePostPage;

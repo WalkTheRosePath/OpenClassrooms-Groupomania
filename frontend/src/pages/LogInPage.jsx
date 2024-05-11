@@ -1,3 +1,4 @@
+// frontend/src/pages/LogInPage.jsx
 // Client-side component for the login page
 
 import React from "react";
@@ -5,8 +6,9 @@ import { Link } from "react-router-dom";
 import LogInForm from "../components/LogInForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-const LogInPage = () => {
+const BaseLogInPage = () => {
   return (
     <div>
       <Header />
@@ -19,5 +21,8 @@ const LogInPage = () => {
     </div>
   );
 };
+
+// Export the protected login page
+const LogInPage = () => <ProtectedRoute component={BaseLogInPage} />;
 
 export default LogInPage;

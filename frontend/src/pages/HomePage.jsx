@@ -54,8 +54,7 @@ const BaseHomePage = () => {
 };
 
 
-// Assign the HomePage component to the default export
+// Export the protected home page 
 const HomePage = () => <ProtectedRoute path="/" component={BaseHomePage} />; 
 
-// Export the HomePage component
 export default HomePage;
