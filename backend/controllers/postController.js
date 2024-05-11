@@ -3,6 +3,7 @@
 
 // Import necessary modules
 const { Post } = require("../models");
+const utils = require("../utils");
 
 // PostController object with controller functions
 const PostController = {
@@ -21,7 +22,8 @@ const PostController = {
       }
 
       // Destructure the title, content, and multimedia URL from the request body
-      const { title, content, multimediaUrl } = postData;
+      const { title, content } = postData;
+      const multimediaUrl = req.file ? utils.createMediaUrl(req) : null;
 
       // Check if the title is empty
       if (!title || !content) {
@@ -34,7 +36,7 @@ const PostController = {
       const newPost = await Post.create({
         title,
         content,
-        multimediaUrl: multimediaUrl || null, // Set multimedia URL to null if not provided
+        multimediaUrl, 
         userId,
       });
 

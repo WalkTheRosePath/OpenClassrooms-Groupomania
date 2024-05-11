@@ -7,8 +7,9 @@ import axios from "axios";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-const PostDetailsPage = () => {
+const BasePostDetailsPage = () => {
   // State to store the post data
   const [post, setPost] = useState(null);
   // State to track loading state
@@ -78,5 +79,10 @@ const PostDetailsPage = () => {
     </div>
   );
 };
+
+// Export the protected post details page
+const PostDetailsPage = () => (
+  <ProtectedRoute path="/post/:id" component={BasePostDetailsPage} />
+);
 
 export default PostDetailsPage;

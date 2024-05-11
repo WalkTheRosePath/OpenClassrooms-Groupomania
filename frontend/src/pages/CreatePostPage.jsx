@@ -1,3 +1,4 @@
+// frontend/src/pages/CreatePostPage.jsx
 // Client-side component for the create post page
 
 import React from "react";
@@ -5,9 +6,8 @@ import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import CreatePostForm from "../components/CreatePostForm";
-import ProtectedRoute from "../components/ProtectedRoute";
 
-const BaseCreatePostPage = () => {
+const CreatePostPage = () => {
   return (
     <div>
       <Header />
@@ -22,6 +22,5 @@ const BaseCreatePostPage = () => {
 };
 
 // Export the protected create post page
-const CreatePostPage = () => <ProtectedRoute component={BaseCreatePostPage} />; 
 
 export default CreatePostPage;

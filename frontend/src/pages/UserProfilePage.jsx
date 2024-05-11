@@ -11,12 +11,12 @@ import Footer from "../components/Footer";
 const UserProfilePage = () => {
   const [user, setUser] = useState({});
   const [redirect, setRedirect] = useState(false);
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("userId");
         const response = await axios.get(
           `http://localhost:3000/api/auth/profile/${userId}`,
           {
@@ -38,8 +38,7 @@ const UserProfilePage = () => {
 
   const handleDeleteProfile = async () => {
     try {
-      const token = localStorage.getItem("token");
-      await axios.delete("http://localhost:3000/api/auth/profile", {
+      await axios.delete(`http://localhost:3000/api/auth/profile/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

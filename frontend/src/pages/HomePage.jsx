@@ -7,9 +7,8 @@ import axios from "axios";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import ProtectedRoute from "../components/ProtectedRoute";
 
-const BaseHomePage = () => {
+const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -54,7 +53,5 @@ const BaseHomePage = () => {
 };
 
 
-// Export the protected home page 
-const HomePage = () => <ProtectedRoute path="/" component={BaseHomePage} />; 
 
 export default HomePage;

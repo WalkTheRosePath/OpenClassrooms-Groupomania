@@ -35,16 +35,16 @@ if (config.use_env_variable) {
 }
 
 // Sync database tables in development environment
-if ("development" === env) {
-  sequelize
-    .sync({ alter: true })
-    .then(() => {
-      console.log("All tables are up to date");
-    })
-    .catch((error) => {
-      console.error("Failed to sync database:", error);
-    });
-}
+// if ("development" === env) {
+//   sequelize
+//     .sync({ alter: true })
+//     .then(() => {
+//       console.log("All tables are up to date");
+//     })
+//     .catch((error) => {
+//       console.error("Failed to sync database:", error);
+//     });
+// }
 
 // Load all models from the current directory
 fs.readdirSync(__dirname)

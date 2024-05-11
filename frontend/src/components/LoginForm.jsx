@@ -23,6 +23,7 @@ const LogInForm = () => {
       if (response.data.token) {
         // Store the token in local storage
         localStorage.setItem("token", response.data.token);
+        //FIXME 1: Store the user ID in local storage
       }
 
       // Redirect to the HomePage upon successful login
