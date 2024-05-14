@@ -21,8 +21,6 @@ const PostDetailsPage = () => {
 
   // Fetch post data when component mounts
   useEffect(() => {
-    console.log(id);
-
     const fetchPost = async () => {
       const token = localStorage.getItem("token");
 
