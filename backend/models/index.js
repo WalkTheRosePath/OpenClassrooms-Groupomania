@@ -34,7 +34,8 @@ if (config.use_env_variable) {
   );
 }
 
-// Sync database tables in development environment
+// Sync database tables in development environment 
+// TODO fix bug for creating too many email indexes
 // if ("development" === env) {
 //   sequelize
 //     .sync({ alter: true })

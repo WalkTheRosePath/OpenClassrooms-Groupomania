@@ -7,9 +7,8 @@ import axios from "axios";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import ProtectedRoute from "../components/ProtectedRoute";
 
-const BasePostDetailsPage = () => {
+const PostDetailsPage = () => {
   // State to store the post data
   const [post, setPost] = useState(null);
   // State to track loading state
@@ -17,15 +16,20 @@ const BasePostDetailsPage = () => {
   // State to track error
   const [error, setError] = useState(null);
 
-  // Get the postId from URL parameters
-  const { postId } = useParams();
+  // Get the post ID from URL parameters
+  const { id } = useParams();
 
   // Fetch post data when component mounts
   useEffect(() => {
+    console.log(id);
+
     const fetchPost = async () => {
+      const token = localStorage.getItem("token");
+
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/posts/${postId}`
+          `http://localhost:3000/api/posts/${id}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         setPost(response.data);
         setIsLoading(false);
@@ -41,7 +45,7 @@ const BasePostDetailsPage = () => {
     return () => {
       // Perform any necessary cleanup
     };
-  }, [postId]);
+  }, [id]);
 
   return (
     <div>
@@ -81,8 +85,4 @@ const BasePostDetailsPage = () => {
 };
 
 // Export the protected post details page
-const PostDetailsPage = () => (
-  <ProtectedRoute path="/post/:id" component={BasePostDetailsPage} />
-);
-
 export default PostDetailsPage;

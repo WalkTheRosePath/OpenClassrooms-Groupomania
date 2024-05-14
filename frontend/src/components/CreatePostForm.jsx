@@ -38,7 +38,7 @@ const CreatePostForm = () => {
       postData.append("title", formData.title);
       postData.append("content", formData.content);
       if (formData.multimedia) {
-        postData.append("multimedia", formData.multimedia);
+        postData.append("media", formData.multimedia);
       }
 
       // Send a POST request to create a new post using Axios
@@ -92,8 +92,8 @@ const CreatePostForm = () => {
           <label htmlFor="multimedia">Upload Multimedia</label>
           <input
             type="file"
-            id="multimedia"
-            name="multimedia"
+            id="media"
+            name="media"
             accept=".jpg, .jpeg, .png, .mp3, .mp4"
             onChange={handleChange}
           />
