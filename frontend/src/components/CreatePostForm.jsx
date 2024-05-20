@@ -72,6 +72,7 @@ const CreatePostForm = () => {
         postData,
         config
       );
+      
       // Check if the response is "Created"
       if (response.status >= 200 && response.status < 300) {
         console.log("Post created successfully");

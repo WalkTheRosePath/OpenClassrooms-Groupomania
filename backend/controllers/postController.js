@@ -80,19 +80,41 @@ const PostController = {
   async markPostAsRead(req, res) {
     const postId = req.params.id;
     const userId = req.userId;
+    // console.log(`postId: ${postId}, userId: ${userId}`);
     try {
       const post = await Post.findByPk(postId);
+      // console.log(`post: ${JSON.stringify(post, null, 2)}`)
       if (!post) {
         return res.status(404).json({ error: "Post not found" });
       }
+      if (!post.usersRead) {
+        post.usersRead = [];
+      }
       if (!post.usersRead.includes(userId)) {
-        post.usersRead.push(userId);
+        post.usersRead = [...post.usersRead, userId];
         await post.save();
       }
       res.status(200).json(post);
     } catch (error) {
       console.error("Error marking post as read:", error);
       res.status(500).json({ error: "Failed to mark post as read" });
+    }
+  },
+
+  // Controller function to check if a post is read
+  async checkIfPostIsRead(req, res) {
+    const postId = req.params.id;
+    const userId = req.userId;
+    try {
+      const post = await Post.findByPk(postId);
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+      const hasRead = post.usersRead.includes(userId);
+      res.status(200).json({ read: hasRead });
+    } catch (error) {
+      console.error("Error checking if post is read:", error);
+      res.status(500).json({ error: "Failed to check if post is read" });
     }
   }
 };
