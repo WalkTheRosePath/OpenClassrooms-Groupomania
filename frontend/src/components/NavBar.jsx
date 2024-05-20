@@ -29,6 +29,9 @@ const NavBar = () => {
     <nav>
       <ul className="nav-links">
         <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
           <Link to="/create-post">Create New Post</Link>
         </li>
         <li>
