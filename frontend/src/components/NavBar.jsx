@@ -19,6 +19,7 @@ const NavBar = () => {
   const logout = () => {
     // Clear the token from localStorage
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     // Redirect to the login page
     window.location.href = "/login";
   };
