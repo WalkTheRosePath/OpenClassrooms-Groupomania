@@ -12,6 +12,7 @@ const CreatePostForm = () => {
     multimedia: null,
   });
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
 
   // Function to handle changes in form fields
   const handleChange = (e) => {
@@ -35,19 +36,29 @@ const CreatePostForm = () => {
 
       // Create a FormData object to send the file
       const postData = new FormData();
-      postData.append("title", formData.title);
-      postData.append("content", formData.content);
-      if (formData.multimedia) {
-        postData.append("media", formData.multimedia);
+      // postData.append("title", formData.title);
+      // postData.append("content", formData.content);
+      postData.append(
+        "post",
+        JSON.stringify({ title: formData.title, content: formData.content })
+      );
+      if (selectedFile) {
+        postData.append("media", selectedFile);
       }
+
+      // FIXME If a file doesn't exist, send a regular JSON POST request
+      // if (selectedFile) {
+      // THEN do below
+      // else do a regular JSON POST request like for signup and login
 
       // Send a POST request to create a new post using Axios
       const response = await axios.post(
         "http://localhost:3000/api/posts",
+
         postData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            // "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
@@ -92,10 +103,11 @@ const CreatePostForm = () => {
           <label htmlFor="multimedia">Upload Multimedia</label>
           <input
             type="file"
+            // value={selectedFile || ""}
             id="media"
             name="media"
             accept=".jpg, .jpeg, .png, .mp3, .mp4"
-            onChange={handleChange}
+            onChange={(e) => setSelectedFile(e.target.files[0])}
           />
         </div>
         <button type="submit">Create Post</button>
