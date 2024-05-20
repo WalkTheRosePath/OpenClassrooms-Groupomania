@@ -38,6 +38,7 @@ const PostController = {
         content,
         multimediaUrl, 
         userId,
+        usersRead: [],
       });
 
       // Respond with the created post
@@ -74,6 +75,26 @@ const PostController = {
       res.status(500).json({ error: "Failed to get post" });
     }
   },
+
+  // Controller function to mark a post as read
+  async markPostAsRead(req, res) {
+    const postId = req.params.id;
+    const userId = req.userId;
+    try {
+      const post = await Post.findByPk(postId);
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+      if (!post.usersRead.includes(userId)) {
+        post.usersRead.push(userId);
+        await post.save();
+      }
+      res.status(200).json(post);
+    } catch (error) {
+      console.error("Error marking post as read:", error);
+      res.status(500).json({ error: "Failed to mark post as read" });
+    }
+  }
 };
 
 module.exports = PostController;

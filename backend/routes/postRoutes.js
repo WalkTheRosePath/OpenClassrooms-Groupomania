@@ -12,6 +12,7 @@ const multerMiddleware = require("../middleware/multerMiddleware");
 router.get("/", authMiddleware, postController.getAllPosts);
 router.get("/:id", authMiddleware, postController.getPostById);
 router.post("/", authMiddleware, multerMiddleware, postController.createPost);
+router.put("/:id/read", authMiddleware, postController.markPostAsRead);
 
 // Export router
 module.exports = router;
