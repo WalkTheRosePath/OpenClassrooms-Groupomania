@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       content: DataTypes.TEXT,
       multimediaUrl: DataTypes.STRING,
+      usersRead: DataTypes.ARRAY(DataTypes.INTEGER),
     },
     {
       sequelize,
