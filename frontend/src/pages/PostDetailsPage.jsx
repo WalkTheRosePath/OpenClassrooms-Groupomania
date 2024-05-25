@@ -31,6 +31,7 @@ const PostDetailsPage = () => {
         );
         setPost(response.data);
         setIsLoading(false);
+        // TODO axios request to mark post as read, look at creating a post with headers, only json no form data
       } catch (error) {
         setError(error.message);
         setIsLoading(false);
@@ -38,11 +39,6 @@ const PostDetailsPage = () => {
     };
 
     fetchPost();
-
-    // Clean up function
-    return () => {
-      // Perform any necessary cleanup
-    };
   }, [id]);
 
   return (
@@ -72,7 +68,12 @@ const PostDetailsPage = () => {
                   )}
                 </div>
               )}
-              <p>Posted by: User {post.userId}</p>
+              <p>
+                Posted by:{" "}
+                {post.User
+                  ? `${post.User.firstName} ${post.User.lastName}`
+                  : "Loading..."}
+              </p>
             </div>
           )}
         </div>

@@ -31,6 +31,8 @@ const HomePage = () => {
     fetchPosts();
   }, []);
 
+  const currentUserId = localStorage.getItem("userId");
+
   return (
     <div>
       <Header />
@@ -39,11 +41,23 @@ const HomePage = () => {
       {/* Display list of posts */}
       <main>
         {posts.map((post) => (
-          <div key={post.id}>
+          <div key={post.id} className="post-details">
             <h2>{post.title}</h2>
-            <p>Author: {post.author}</p>
             <p>{post.content}</p>
-            <Link to={`/post/${post.id}`}>Read more</Link>
+            <p>
+              Author: {post.User.firstName} {post.User.lastName}
+            </p>
+            {post.multimediaUrl && (
+              // TODO Use conditional rendering to display html tags for multimedia based on the file extension type (image jpg or png, video mp4, audio mp3)
+              <img
+                src={post.multimediaUrl}
+                alt={post.title}
+                style={{ width: "100px", height: "auto" }}
+              />
+            )}
+            {post.usersRead &&
+              post.usersRead.includes(Number(currentUserId)) && <p>Read</p>}
+            <Link to={`/post/${post.id}`}>See more</Link>
           </div>
         ))}
       </main>

@@ -1,4 +1,4 @@
-// frontend/src/utils/PrivateRoute.js
+// frontend/src/components/PrivateRoute.jsx
 
 // Import necessary modules
 import { useNavigate } from "react-router-dom";

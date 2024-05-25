@@ -89,6 +89,10 @@ p {
   font-size: 14px;
 }
 
+.post-details { 
+  margin-bottom: 20px;
+}
+
 /* Media Query for Mobile Phones */
 @media (max-width: 767px) {
   .form-group {

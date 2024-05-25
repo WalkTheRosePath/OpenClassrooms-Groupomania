@@ -2,7 +2,7 @@
 // Server-side controller functions for handling post-related operations
 
 // Import necessary modules
-const { Post } = require("../models");
+const { Post, User } = require("../models");
 const utils = require("../utils");
 
 // PostController object with controller functions
@@ -53,7 +53,15 @@ const PostController = {
   async getAllPosts(req, res) {
     try {
       // Retrieve all posts from the database
-      const posts = await Post.findAll();
+      const posts = await Post.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ["firstName", "lastName"],
+          },
+        ],
+        order: [["createdAt", "DESC"]],
+      });
       res.json(posts);
     } catch (error) {
       console.error("Error getting posts:", error);
@@ -65,7 +73,12 @@ const PostController = {
   async getPostById(req, res) {
     const postId = req.params.id;
     try {
-      const post = await Post.findByPk(postId);
+      const post = await Post.findByPk(postId, {
+        include: [{
+          model: User,
+          attributes: ['firstName', 'lastName'],
+        }],
+      });
       if (!post) {
         return res.status(404).json({ error: "Post not found" });
       }

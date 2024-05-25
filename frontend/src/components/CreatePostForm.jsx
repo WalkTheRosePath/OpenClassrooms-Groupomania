@@ -68,7 +68,7 @@ const CreatePostForm = () => {
 
       // Send a POST request to create a new post using Axios
       const response = await axios.post(
-        "http://localhost:3001/api/posts",
+        "http://localhost:3000/api/posts",
         postData,
         config
       );
