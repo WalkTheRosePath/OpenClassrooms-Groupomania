@@ -13,6 +13,12 @@ const PostController = {
       // Get the user ID from the request object
       const userId = req.userId;
 
+      // Check if the user ID is valid
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
       let postData;
 
       if (req.file) {

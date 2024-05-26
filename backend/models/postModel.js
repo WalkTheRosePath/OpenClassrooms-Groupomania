@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   // Define the association with the User model
   Post.associate = (models) => {
-    Post.belongsTo(models.User, { foreignKey: "userId" });
+    Post.belongsTo(models.User, { foreignKey: "userId", onDelete: "CASCADE" });
   };
   return Post;
 };
