@@ -11,10 +11,6 @@ import Footer from "../components/Footer";
 const PostDetailsPage = () => {
   // State to store the post data
   const [post, setPost] = useState(null);
-  // State to track loading state
-  const [isLoading, setIsLoading] = useState(true);
-  // State to track error
-  const [error, setError] = useState(null);
 
   // Get the post ID from URL parameters
   const { id } = useParams();
@@ -30,11 +26,9 @@ const PostDetailsPage = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setPost(response.data);
-        setIsLoading(false);
         // TODO axios request to mark post as read, look at creating a post with headers, only json no form data
       } catch (error) {
-        setError(error.message);
-        setIsLoading(false);
+        console.error("Error fetching post:", error);
       }
     };
 
@@ -47,36 +41,46 @@ const PostDetailsPage = () => {
       <h1>Post Details</h1>
       <NavBar />
       <main>
-        <div className="post-details-container">
-          {isLoading && <div>Loading...</div>}
-          {error && <div>Error: {error}</div>}
-          {post && (
-            // Render post details
-            <div className="post-details">
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              {/* Render multimedia content if available */}
-              {post.multimediaUrl && (
-                <div className="multimedia">
-                  {post.multimediaUrl.endsWith(".mp4") ? (
-                    <video controls>
-                      <source src={post.multimediaUrl} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : (
-                    <img src={post.multimediaUrl} alt="Multimedia" />
-                  )}
-                </div>
-              )}
-              <p>
-                Posted by:{" "}
-                {post.User
-                  ? `${post.User.firstName} ${post.User.lastName}`
-                  : "Loading..."}
-              </p>
-            </div>
-          )}
-        </div>
+        {post && (
+          // Render post details
+          <div className="post-details">
+            <h2>{post.title}</h2>
+            <p>{post.content}</p>
+            {/* Render multimedia content if available */}
+            {post.multimediaUrl && (
+              <div className="multimedia">
+                {post.multimediaUrl.endsWith(".jpg") ||
+                post.multimediaUrl.endsWith(".png") ? (
+                  <img
+                    src={post.multimediaUrl}
+                    alt={post.title}
+                    style={{ width: "100px", height: "auto" }}
+                  />
+                ) : null}
+
+                {post.multimediaUrl.endsWith(".mp4") ? (
+                  <video width="320" height="240" controls>
+                    <source src={post.multimediaUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : null}
+
+                {post.multimediaUrl.endsWith(".mp3") ? (
+                  <audio controls>
+                    <source src={post.multimediaUrl} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                ) : null}
+              </div>
+            )}
+            <p>
+              Posted by:{" "}
+              {post.User
+                ? `${post.User.firstName} ${post.User.lastName}`
+                : "Loading..."}
+            </p>
+          </div>
+        )}
       </main>
       <Footer />
     </div>

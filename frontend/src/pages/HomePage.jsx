@@ -9,6 +9,7 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
+  // State to store the list of posts
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -48,12 +49,30 @@ const HomePage = () => {
               Author: {post.User.firstName} {post.User.lastName}
             </p>
             {post.multimediaUrl && (
-              // TODO Use conditional rendering to display html tags for multimedia based on the file extension type (image jpg or png, video mp4, audio mp3)
-              <img
-                src={post.multimediaUrl}
-                alt={post.title}
-                style={{ width: "100px", height: "auto" }}
-              />
+              <>
+                {post.multimediaUrl.endsWith(".jpg") ||
+                post.multimediaUrl.endsWith(".png") ? (
+                  <img
+                    src={post.multimediaUrl}
+                    alt={post.title}
+                    style={{ width: "100px", height: "auto" }}
+                  />
+                ) : null}
+
+                {post.multimediaUrl.endsWith(".mp4") ? (
+                  <video width="320" height="240" controls>
+                    <source src={post.multimediaUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : null}
+
+                {post.multimediaUrl.endsWith(".mp3") ? (
+                  <audio controls>
+                    <source src={post.multimediaUrl} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                ) : null}
+              </>
             )}
             {post.usersRead &&
               post.usersRead.includes(Number(currentUserId)) && <p>Read</p>}
