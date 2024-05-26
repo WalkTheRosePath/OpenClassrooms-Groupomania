@@ -77,7 +77,7 @@ const PostDetailsPage = () => {
                 ) : null}
               </div>
             )}
-            <p>{post.content}</p>
+            <p className="post-content">{post.content}</p>
             <p>
               Author:{" "}
               {post.User

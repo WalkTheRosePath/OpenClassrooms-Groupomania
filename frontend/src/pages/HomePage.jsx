@@ -45,7 +45,7 @@ const HomePage = () => {
           <div key={post.id} className="post-details">
             <h2>{post.title}</h2>
             {post.usersRead &&
-              post.usersRead.includes(Number(currentUserId)) && <p>Read</p>}
+              post.usersRead.includes(Number(currentUserId)) && <p className="read-text">Read</p>}
             {post.multimediaUrl && (
               <>
                 {post.multimediaUrl.endsWith(".jpg") ||
@@ -72,7 +72,7 @@ const HomePage = () => {
                 ) : null}
               </>
             )}
-            <p>{post.content}</p>
+            <p className="post-content">{post.content}</p>
             <p>
               Author: {post.User.firstName} {post.User.lastName}
             </p>

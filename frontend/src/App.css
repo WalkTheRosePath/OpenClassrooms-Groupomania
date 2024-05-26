@@ -93,6 +93,15 @@ p {
   margin-bottom: 20px;
 }
 
+.post-content {
+  font-size: 20px;
+}
+
+.read-text {
+  color: #fd2d01;
+  font-weight: bold;
+}
+
 /* Media Query for Mobile Phones */
 @media (max-width: 767px) {
   .form-group {
