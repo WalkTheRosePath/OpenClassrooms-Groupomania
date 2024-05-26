@@ -26,7 +26,13 @@ const PostDetailsPage = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setPost(response.data);
-        // TODO axios request to mark post as read, look at creating a post with headers, only json no form data
+
+        // Mark the post as read
+        await axios.put(
+          `http://localhost:3000/api/posts/${id}/read`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
       } catch (error) {
         console.error("Error fetching post:", error);
       }
