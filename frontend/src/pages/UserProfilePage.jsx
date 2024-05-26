@@ -43,6 +43,8 @@ const UserProfilePage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       setRedirect(true);
     } catch (error) {
       console.error("Error deleting user profile:", error);
