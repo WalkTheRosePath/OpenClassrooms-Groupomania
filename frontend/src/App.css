@@ -89,7 +89,7 @@ p {
   font-size: 14px;
 }
 
-.post-details { 
+.post-details {
   margin-bottom: 20px;
 }
 
@@ -100,6 +100,12 @@ p {
 .read-text {
   color: #fd2d01;
   font-weight: bold;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Media Query for Mobile Phones */

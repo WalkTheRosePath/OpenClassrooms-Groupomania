@@ -72,7 +72,7 @@ const HomePage = () => {
                 ) : null}
               </>
             )}
-            <p className="post-content">{post.content}</p>
+            <p className="post-content truncate">{post.content}</p>
             <p>
               Author: {post.User.firstName} {post.User.lastName}
             </p>
