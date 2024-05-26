@@ -44,10 +44,8 @@ const HomePage = () => {
         {posts.map((post) => (
           <div key={post.id} className="post-details">
             <h2>{post.title}</h2>
-            <p>{post.content}</p>
-            <p>
-              Author: {post.User.firstName} {post.User.lastName}
-            </p>
+            {post.usersRead &&
+              post.usersRead.includes(Number(currentUserId)) && <p>Read</p>}
             {post.multimediaUrl && (
               <>
                 {post.multimediaUrl.endsWith(".jpg") ||
@@ -74,8 +72,10 @@ const HomePage = () => {
                 ) : null}
               </>
             )}
-            {post.usersRead &&
-              post.usersRead.includes(Number(currentUserId)) && <p>Read</p>}
+            <p>{post.content}</p>
+            <p>
+              Author: {post.User.firstName} {post.User.lastName}
+            </p>
             <Link to={`/post/${post.id}`}>See more</Link>
           </div>
         ))}

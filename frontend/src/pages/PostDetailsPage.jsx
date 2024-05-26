@@ -51,8 +51,6 @@ const PostDetailsPage = () => {
           // Render post details
           <div className="post-details">
             <h2>{post.title}</h2>
-            <p>{post.content}</p>
-            {/* Render multimedia content if available */}
             {post.multimediaUrl && (
               <div className="multimedia">
                 {post.multimediaUrl.endsWith(".jpg") ||
@@ -79,8 +77,9 @@ const PostDetailsPage = () => {
                 ) : null}
               </div>
             )}
+            <p>{post.content}</p>
             <p>
-              Posted by:{" "}
+              Author:{" "}
               {post.User
                 ? `${post.User.firstName} ${post.User.lastName}`
                 : "Loading..."}
@@ -93,5 +92,5 @@ const PostDetailsPage = () => {
   );
 };
 
-// Export the protected post details page
+// Export the post details page
 export default PostDetailsPage;
