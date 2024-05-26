@@ -43,14 +43,17 @@ const HomePage = () => {
       <main>
         {posts.map((post) => (
           <div key={post.id} className="post-details">
-            <h2>{post.title}</h2>
+            <h2 className="post-element">{post.title}</h2>
             {post.usersRead &&
-              post.usersRead.includes(Number(currentUserId)) && <p className="read-text">Read</p>}
+              post.usersRead.includes(Number(currentUserId)) && (
+                <p className="read-text post-element">Read</p>
+              )}
             {post.multimediaUrl && (
               <>
                 {post.multimediaUrl.endsWith(".jpg") ||
                 post.multimediaUrl.endsWith(".png") ? (
                   <img
+                    className="post-element"
                     src={post.multimediaUrl}
                     alt={post.title}
                     style={{ width: "100px", height: "auto" }}
@@ -58,25 +61,32 @@ const HomePage = () => {
                 ) : null}
 
                 {post.multimediaUrl.endsWith(".mp4") ? (
-                  <video width="320" height="240" controls>
+                  <video
+                    className="post-element"
+                    width="300"
+                    height="220"
+                    controls
+                  >
                     <source src={post.multimediaUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 ) : null}
 
                 {post.multimediaUrl.endsWith(".mp3") ? (
-                  <audio controls>
+                  <audio className="post-element" controls>
                     <source src={post.multimediaUrl} type="audio/mpeg" />
                     Your browser does not support the audio element.
                   </audio>
                 ) : null}
               </>
             )}
-            <p className="post-content truncate">{post.content}</p>
-            <p>
+            <p className="post-content truncate post-element">{post.content}</p>
+            <p className="post-element">
               Author: {post.User.firstName} {post.User.lastName}
             </p>
-            <Link to={`/post/${post.id}`}>See more</Link>
+            <Link className="post-element" to={`/post/${post.id}`}>
+              See more
+            </Link>
           </div>
         ))}
       </main>

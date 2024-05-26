@@ -50,12 +50,13 @@ const PostDetailsPage = () => {
         {post && (
           // Render post details
           <div className="post-details">
-            <h2>{post.title}</h2>
+            <h2 className="post-element">{post.title}</h2>
             {post.multimediaUrl && (
               <div className="multimedia">
                 {post.multimediaUrl.endsWith(".jpg") ||
                 post.multimediaUrl.endsWith(".png") ? (
                   <img
+                    className="post-element"
                     src={post.multimediaUrl}
                     alt={post.title}
                     style={{ width: "100px", height: "auto" }}
@@ -63,22 +64,27 @@ const PostDetailsPage = () => {
                 ) : null}
 
                 {post.multimediaUrl.endsWith(".mp4") ? (
-                  <video width="320" height="240" controls>
+                  <video
+                    className="post-element"
+                    width="300"
+                    height="220"
+                    controls
+                  >
                     <source src={post.multimediaUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 ) : null}
 
                 {post.multimediaUrl.endsWith(".mp3") ? (
-                  <audio controls>
+                  <audio className="post-element" controls>
                     <source src={post.multimediaUrl} type="audio/mpeg" />
                     Your browser does not support the audio element.
                   </audio>
                 ) : null}
               </div>
             )}
-            <p className="post-content">{post.content}</p>
-            <p>
+            <p className="post-content post-element">{post.content}</p>
+            <p className="post-element">
               Author:{" "}
               {post.User
                 ? `${post.User.firstName} ${post.User.lastName}`

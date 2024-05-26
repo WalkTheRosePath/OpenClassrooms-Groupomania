@@ -90,7 +90,14 @@ p {
 }
 
 .post-details {
-  margin-bottom: 20px;
+  margin: 20px;
+  border: #fd2d01 2px solid;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.post-element {
+  margin-bottom: 10px;
 }
 
 .post-content {
