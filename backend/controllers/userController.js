@@ -64,7 +64,7 @@ const UserController = {
               });
             }
             // Generate JWT token for authentication
-            const token = jwt.sign({ userId: user.id }, "RANDOM_TOKEN_SECRET", {
+            const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
               expiresIn: "24h",
             });
             // Send successful login response with token
