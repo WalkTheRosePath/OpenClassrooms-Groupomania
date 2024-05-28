@@ -86,7 +86,7 @@ main {
 }
 
 p {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .post-details {
@@ -102,6 +102,8 @@ p {
 
 .post-content {
   font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .read-text {
@@ -132,7 +134,7 @@ p {
   }
 
   .header-container img {
-    height: 80px;
+    height: 70px;
   }
 
   .nav-links {
@@ -141,5 +143,13 @@ p {
 
   .nav-links li {
     padding: 10px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .post-element {
+    width: 250px;
   }
 }

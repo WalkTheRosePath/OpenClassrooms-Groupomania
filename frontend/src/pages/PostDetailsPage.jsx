@@ -59,14 +59,14 @@ const PostDetailsPage = () => {
                     className="post-element"
                     src={post.multimediaUrl}
                     alt={post.title}
-                    style={{ width: "100px", height: "auto" }}
+                    style={{ width: "260px", height: "auto" }}
                   />
                 ) : null}
 
                 {post.multimediaUrl.endsWith(".mp4") ? (
                   <video
                     className="post-element"
-                    width="300"
+                    width="260"
                     height="220"
                     controls
                   >
